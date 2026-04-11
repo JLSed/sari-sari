@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="PackData" format=3 uid="uid://bh3egumhe3mrs"]
+
+[ext_resource type="PackedScene" uid="uid://bv685udw74re2" path="res://Scenes/Components/Snacks/GoodsBody.tscn" id="1_s5iv0"]
+[ext_resource type="Script" uid="uid://d4mpdx1xawvvp" path="res://Scripts/Regulars/Resources/PackSpriteData.gd" id="1_tu2f8"]
+[ext_resource type="Texture2D" uid="uid://qwhb6dhqqd54" path="res://Assets/Sprites/Snacks/lumpia.png" id="2_8pv5m"]
+[ext_resource type="Script" uid="uid://bp4lvgeddtvx5" path="res://Scripts/Regulars/Resources/PackData.gd" id="2_st8e5"]
+[ext_resource type="Script" uid="uid://to1isbr65bwb" path="res://Scripts/Regulars/ItemData.gd" id="3_ij2ls"]
+[ext_resource type="Texture2D" uid="uid://drji7c4imgc28" path="res://Assets/Sprites/Snacks/Packs/lumpia-in-pack.png" id="5_8pv5m"]
+
+[sub_resource type="Resource" id="Resource_34qaw"]
+script = ExtResource("3_ij2ls")
+item_name = "Lumpia"
+category = 1
+item_sprite = ExtResource("2_8pv5m")
+item_body = ExtResource("1_s5iv0")
+metadata/_custom_type_script = "uid://to1isbr65bwb"
+
+[sub_resource type="Resource" id="Resource_ij2ls"]
+script = ExtResource("1_tu2f8")
+sprite_sheet = ExtResource("5_8pv5m")
+sheet_columns = 6
+metadata/_custom_type_script = "uid://d4mpdx1xawvvp"
+
+[resource]
+script = ExtResource("2_st8e5")
+item_data = SubResource("Resource_34qaw")
+current_stack = 8
+max_stack = 8
+allowed_container = Array[int]([1])
+pack_sprite_by_container = Dictionary[int, ExtResource("1_tu2f8")]({
+1: SubResource("Resource_ij2ls")
+})
+metadata/_custom_type_script = "uid://bp4lvgeddtvx5"

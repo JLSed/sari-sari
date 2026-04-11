@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="PackData" format=3 uid="uid://6cqvaewfwkwp"]
+
+[ext_resource type="PackedScene" uid="uid://bv685udw74re2" path="res://Scenes/Components/Snacks/GoodsBody.tscn" id="1_4ms0k"]
+[ext_resource type="Script" uid="uid://bp4lvgeddtvx5" path="res://Scripts/Regulars/Resources/PackData.gd" id="1_80e8m"]
+[ext_resource type="Texture2D" uid="uid://q21hrdtpw0to" path="res://Assets/Resources/Goods/Snacks/stick-u.png" id="1_wla4v"]
+[ext_resource type="Script" uid="uid://to1isbr65bwb" path="res://Scripts/Regulars/ItemData.gd" id="1_xtv7v"]
+[ext_resource type="Texture2D" uid="uid://c3s18562jcpj2" path="res://Assets/Sprites/Snacks/Packs/sticku-in-pack.png" id="2_c8fr2"]
+[ext_resource type="Script" uid="uid://d4mpdx1xawvvp" path="res://Scripts/Regulars/Resources/PackSpriteData.gd" id="2_wla4v"]
+
+[sub_resource type="Resource" id="Resource_4ms0k"]
+script = ExtResource("1_xtv7v")
+item_name = "Stick-u"
+item_sprite = ExtResource("1_wla4v")
+item_body = ExtResource("1_4ms0k")
+metadata/_custom_type_script = "uid://to1isbr65bwb"
+
+[sub_resource type="Resource" id="Resource_xtv7v"]
+script = ExtResource("2_wla4v")
+sprite_sheet = ExtResource("2_c8fr2")
+metadata/_custom_type_script = "uid://d4mpdx1xawvvp"
+
+[resource]
+script = ExtResource("1_80e8m")
+item_data = SubResource("Resource_4ms0k")
+current_stack = 18
+max_stack = 24
+allowed_container = Array[int]([2])
+pack_sprite_by_container = Dictionary[int, ExtResource("2_wla4v")]({
+2: SubResource("Resource_xtv7v")
+})
+metadata/_custom_type_script = "uid://bp4lvgeddtvx5"

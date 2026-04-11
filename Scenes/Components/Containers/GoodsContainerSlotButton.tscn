@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://03e8a1mxywh2"]
+
+[ext_resource type="Texture2D" uid="uid://vr6edp8uikd8" path="res://Assets/UI/Spritesheet_UI_Flat_Animated.png" id="1_774tx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ly30"]
+atlas = ExtResource("1_774tx")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r746f"]
+atlas = ExtResource("1_774tx")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oh2ju"]
+atlas = ExtResource("1_774tx")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sam15"]
+atlas = ExtResource("1_774tx")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r30to"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ly30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r746f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oh2ju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sam15")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GoodsContainerSlotButton" type="Button" unique_id=168482473]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -67.5
+offset_right = -134.0
+offset_bottom = -51.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=872350457]
+show_behind_parent = true
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_r30to")
+autoplay = "default"
+frame_progress = 0.76554036

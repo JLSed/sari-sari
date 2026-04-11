@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c1op5y186du4s"]
+
+[ext_resource type="Texture2D" uid="uid://bgweftf2ykjr3" path="res://Assets/UI/brown_pressed.png" id="1_4su0c"]
+[ext_resource type="Texture2D" uid="uid://dtd7ym8wykjt8" path="res://Assets/Sprites/Snacks/clover.png" id="2_na2f1"]
+[ext_resource type="Script" uid="uid://cf8lrkt1ojiu6" path="res://Scripts/Scenes/Components/UI/pack_item_ui.gd" id="2_wa5rc"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="3_na2f1"]
+
+[node name="PackItemUI" type="NinePatchRect" unique_id=616446918]
+custom_minimum_size = Vector2(45, 35)
+texture = ExtResource("1_4su0c")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+script = ExtResource("2_wa5rc")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=15907422]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 7.0
+offset_bottom = 25.0
+grow_horizontal = 2
+texture = ExtResource("2_na2f1")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1232351352]
+layout_mode = 0
+offset_left = 3.0
+offset_right = 43.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("3_na2f1")
+theme_override_font_sizes/font_size = 8
+text = "PackName"
+
+[node name="Button" type="Button" parent="." unique_id=2035934668]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_na2f1")
+theme_override_font_sizes/font_size = 8
+text = "Place"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

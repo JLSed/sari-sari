@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://djox4kn52krsu"]
+
+[ext_resource type="Script" uid="uid://dg1l3n4aalqj5" path="res://Scripts/Scenes/Components/Containers/GoodsContainer.gd" id="1_rgy3i"]
+[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/PickPackUI.tscn" id="2_4f6lv"]
+[ext_resource type="PackedScene" uid="uid://03e8a1mxywh2" path="res://Scenes/Components/Containers/GoodsContainerSlotButton.tscn" id="3_4f6lv"]
+[ext_resource type="Script" uid="uid://deo6y7tj5y30l" path="res://Scripts/Regulars/Resources/GoodsContainerSlot.gd" id="3_jyoba"]
+
+[sub_resource type="Resource" id="Resource_b6lwh"]
+script = ExtResource("3_jyoba")
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="Resource" id="Resource_jyoba"]
+script = ExtResource("3_jyoba")
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="Resource" id="Resource_klp7k"]
+script = ExtResource("3_jyoba")
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="Resource" id="Resource_vm410"]
+script = ExtResource("3_jyoba")
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rgy3i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4f6lv"]
+
+[node name="GoodsContainer" type="Node2D" unique_id=1401081475 node_paths=PackedStringArray("pack_sprites", "slot_buttons")]
+script = ExtResource("1_rgy3i")
+PickPackUI = ExtResource("2_4f6lv")
+pack_per_slot = Array[ExtResource("3_jyoba")]([SubResource("Resource_b6lwh"), SubResource("Resource_jyoba"), SubResource("Resource_klp7k"), SubResource("Resource_vm410")])
+pack_sprites = [NodePath("Pack1"), NodePath("Pack2"), NodePath("Pack3"), NodePath("Pack4")]
+slot_buttons = [NodePath("GoodsContainerSlotButton1"), NodePath("GoodsContainerSlotButton2"), NodePath("GoodsContainerSlotButton3"), NodePath("GoodsContainerSlotButton4")]
+
+[node name="ContainerImage" type="Sprite2D" parent="." unique_id=1445098297]
+
+[node name="Pack1" type="AnimatedSprite2D" parent="." unique_id=1338499008]
+position = Vector2(-46, 3)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_rgy3i")
+
+[node name="Pack2" type="AnimatedSprite2D" parent="." unique_id=372829578]
+position = Vector2(-16, 3)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4f6lv")
+
+[node name="Pack3" type="AnimatedSprite2D" parent="." unique_id=528109734]
+position = Vector2(16, 3)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4f6lv")
+
+[node name="Pack4" type="AnimatedSprite2D" parent="." unique_id=1636526562]
+position = Vector2(46, 3)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4f6lv")
+
+[node name="GoodsContainerSlotButton1" parent="." unique_id=236369935 instance=ExtResource("3_4f6lv")]
+offset_left = -54.0
+offset_top = -20.0
+offset_right = -38.0
+offset_bottom = -4.0
+
+[node name="GoodsContainerSlotButton2" parent="." unique_id=2017382160 instance=ExtResource("3_4f6lv")]
+offset_left = -24.0
+offset_top = -20.0
+offset_right = -8.0
+offset_bottom = -4.0
+
+[node name="GoodsContainerSlotButton3" parent="." unique_id=128975793 instance=ExtResource("3_4f6lv")]
+offset_left = 8.0
+offset_top = -20.0
+offset_right = 24.0
+offset_bottom = -4.0
+
+[node name="GoodsContainerSlotButton4" parent="." unique_id=706823830 instance=ExtResource("3_4f6lv")]
+offset_left = 38.0
+offset_top = -20.0
+offset_right = 54.0
+offset_bottom = -4.0

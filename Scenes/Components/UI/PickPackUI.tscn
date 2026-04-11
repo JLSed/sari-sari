@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dlxbdp3ke7jxo"]
+
+[ext_resource type="Texture2D" uid="uid://554tv8wbtxy4" path="res://Assets/UI/tan_pressed.png" id="1_0cwji"]
+[ext_resource type="Script" uid="uid://c5cwoxo1wn81s" path="res://Scripts/Scenes/Components/UI/pick_pack_ui.gd" id="1_klqll"]
+[ext_resource type="Texture2D" uid="uid://bb586vdcgy02b" path="res://Assets/UI/white_inlay.png" id="2_klqll"]
+[ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="3_xgtoy"]
+[ext_resource type="PackedScene" uid="uid://c1op5y186du4s" path="res://Scenes/Components/UI/pack_item_ui.tscn" id="4_ndoed"]
+
+[node name="PickPackUI" type="Control" unique_id=1382181969]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 135.0
+script = ExtResource("1_klqll")
+PackItemUI = ExtResource("4_ndoed")
+
+[node name="PanelBackground" type="NinePatchRect" parent="." unique_id=1277642034]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -59.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_0cwji")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+
+[node name="TitleBackground" type="NinePatchRect" parent="." unique_id=2063819501]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -61.0
+offset_right = -197.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_klqll")
+region_rect = Rect2(0, 0, 44, 44)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="." unique_id=1438487888]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -59.0
+offset_right = 3.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.8675762, 0.65667236, 0.45203483, 1)
+theme_override_fonts/font = ExtResource("3_xgtoy")
+theme_override_font_sizes/font_size = 10
+text = "Packs"
+
+[node name="ItemContainer" type="HBoxContainer" parent="." unique_id=522972253]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -47.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="CloseButton" type="Button" parent="." unique_id=1522512236]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -21.0
+offset_top = -61.0
+offset_right = -3.0
+offset_bottom = -47.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 4
+text = "X"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

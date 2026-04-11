@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ch38dfo383iqr"]
+
+[ext_resource type="Script" uid="uid://bp088h7sy1y3s" path="res://Scripts/Globals/player_manager.gd" id="1_5j7nk"]
+[ext_resource type="Resource" uid="uid://cyal61kx6plim" path="res://Assets/Resources/Store/store1.tres" id="2_kek0o"]
+[ext_resource type="Script" uid="uid://jdq1cx1mg4x6" path="res://Scripts/Regulars/Resources/purchased_pack_entry.gd" id="3_kum8y"]
+[ext_resource type="Resource" uid="uid://dv5dx33k5xij" path="res://Assets/Resources/Pack/closerInPack.tres" id="4_kum8y"]
+[ext_resource type="Resource" uid="uid://6cqvaewfwkwp" path="res://Assets/Resources/Pack/stikuInPack.tres" id="5_q54ao"]
+[ext_resource type="Resource" uid="uid://bh3egumhe3mrs" path="res://Assets/Resources/Pack/lumpiaInPack.tres" id="6_kum8y"]
+
+[sub_resource type="Resource" id="Resource_q54ao"]
+script = ExtResource("3_kum8y")
+pack_data = ExtResource("6_kum8y")
+quantity = 12
+metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
+
+[sub_resource type="Resource" id="Resource_ctksh"]
+script = ExtResource("3_kum8y")
+pack_data = ExtResource("4_kum8y")
+quantity = 12
+metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
+
+[sub_resource type="Resource" id="Resource_htey3"]
+script = ExtResource("3_kum8y")
+pack_data = ExtResource("5_q54ao")
+quantity = 24
+metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
+
+[node name="PlayerManager" type="Node2D" unique_id=603988405]
+script = ExtResource("1_5j7nk")
+current_store = ExtResource("2_kek0o")
+purchased_goods = Array[ExtResource("3_kum8y")]([SubResource("Resource_q54ao"), SubResource("Resource_ctksh"), SubResource("Resource_htey3")])

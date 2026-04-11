@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://c5omrvrvykecc"]
+
+[ext_resource type="Script" uid="uid://dg1l3n4aalqj5" path="res://Scripts/Scenes/Components/Containers/GoodsContainer.gd" id="1_1tc03"]
+[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/PickPackUI.tscn" id="2_5i0wk"]
+[ext_resource type="Script" uid="uid://deo6y7tj5y30l" path="res://Scripts/Regulars/Resources/GoodsContainerSlot.gd" id="3_1bd6u"]
+[ext_resource type="Texture2D" uid="uid://f52naisyacfu" path="res://Assets/Sprites/Store/Container/container2.png" id="3_dlruh"]
+[ext_resource type="PackedScene" uid="uid://03e8a1mxywh2" path="res://Scenes/Components/Containers/GoodsContainerSlotButton.tscn" id="6_oswfd"]
+
+[sub_resource type="Resource" id="Resource_1tc03"]
+script = ExtResource("3_1bd6u")
+container_id = 2
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="Resource" id="Resource_5i0wk"]
+script = ExtResource("3_1bd6u")
+container_id = 2
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="Resource" id="Resource_ontlt"]
+script = ExtResource("3_1bd6u")
+container_id = 2
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="Resource" id="Resource_oswfd"]
+script = ExtResource("3_1bd6u")
+container_id = 2
+metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ie0qr"]
+
+[node name="GoodsContainer" type="Node2D" unique_id=1401081475 node_paths=PackedStringArray("pack_sprites", "slot_buttons")]
+script = ExtResource("1_1tc03")
+PickPackUI = ExtResource("2_5i0wk")
+pack_per_slot = Array[ExtResource("3_1bd6u")]([SubResource("Resource_1tc03"), SubResource("Resource_5i0wk"), SubResource("Resource_ontlt"), SubResource("Resource_oswfd")])
+pack_sprites = [NodePath("Pack1"), NodePath("Pack2"), NodePath("Pack3"), NodePath("Pack4")]
+slot_buttons = [NodePath("GoodsContainerSlotButton1"), NodePath("GoodsContainerSlotButton2"), NodePath("GoodsContainerSlotButton3"), NodePath("GoodsContainerSlotButton4")]
+
+[node name="Pack1" type="AnimatedSprite2D" parent="." unique_id=1338499008]
+position = Vector2(-47.8125, 10)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ie0qr")
+
+[node name="Pack2" type="AnimatedSprite2D" parent="." unique_id=183684758]
+position = Vector2(-15.531109, 9.843703)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ie0qr")
+
+[node name="Pack3" type="AnimatedSprite2D" parent="." unique_id=1643048943]
+position = Vector2(15.681702, 10.26323)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ie0qr")
+
+[node name="Pack4" type="AnimatedSprite2D" parent="." unique_id=1376748966]
+position = Vector2(48.153095, 10.179326)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ie0qr")
+
+[node name="ContainerImage" type="Sprite2D" parent="." unique_id=1445098297]
+position = Vector2(-9.536742e-07, 9.999999)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_dlruh")
+
+[node name="GoodsContainerSlotButton1" parent="." unique_id=236369935 instance=ExtResource("6_oswfd")]
+offset_left = -55.940502
+offset_top = -0.22883224
+offset_right = -39.940502
+offset_bottom = 15.771168
+
+[node name="GoodsContainerSlotButton2" parent="." unique_id=2017382160 instance=ExtResource("6_oswfd")]
+offset_left = -24.0
+offset_top = 0.0
+offset_right = -8.0
+offset_bottom = 16.0
+
+[node name="GoodsContainerSlotButton3" parent="." unique_id=128975793 instance=ExtResource("6_oswfd")]
+offset_left = 8.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 16.0
+
+[node name="GoodsContainerSlotButton4" parent="." unique_id=706823830 instance=ExtResource("6_oswfd")]
+offset_left = 40.0
+offset_top = 0.0
+offset_right = 56.0
+offset_bottom = 16.0

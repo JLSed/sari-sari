@@ -1,0 +1,67 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Sari-Sari"
+config/version="a0.0"
+run/main_scene="uid://b2p7tlxne0gw6"
+config/features=PackedStringArray("4.6", "Mobile")
+config/icon="res://Assets/Icons/icon.svg"
+
+[autoload]
+
+Enums="*uid://bml2vwqhpxjt6"
+SignalBus="*uid://4sg2mgr56elj"
+PlayerManager="*uid://ch38dfo383iqr"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=2
+
+[display]
+
+window/size/viewport_width=300
+window/size/viewport_height=135
+window/size/always_on_top=true
+window/size/window_width_override=1500
+window/size/window_height_override=675
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "teal",
+"res://Documentation/": "pink",
+"res://Scenes/": "orange",
+"res://Scripts/": "yellow"
+}
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
+viewport/hdr_2d=true
+2d/snap/snap_2d_transforms_to_pixel=true

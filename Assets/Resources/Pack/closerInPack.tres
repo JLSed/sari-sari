@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="PackData" format=3 uid="uid://dv5dx33k5xij"]
+
+[ext_resource type="Texture2D" uid="uid://dtd7ym8wykjt8" path="res://Assets/Sprites/Snacks/clover.png" id="1_0hv81"]
+[ext_resource type="Script" uid="uid://bp4lvgeddtvx5" path="res://Scripts/Regulars/Resources/PackData.gd" id="1_e8myh"]
+[ext_resource type="PackedScene" uid="uid://bv685udw74re2" path="res://Scenes/Components/Snacks/GoodsBody.tscn" id="1_mxk55"]
+[ext_resource type="Texture2D" uid="uid://dq61abqckqylv" path="res://Assets/Sprites/Snacks/Packs/clove-in-pack.png" id="2_5y025"]
+[ext_resource type="Script" uid="uid://to1isbr65bwb" path="res://Scripts/Regulars/ItemData.gd" id="2_mj4dj"]
+[ext_resource type="Script" uid="uid://d4mpdx1xawvvp" path="res://Scripts/Regulars/Resources/PackSpriteData.gd" id="3_0hv81"]
+
+[sub_resource type="Resource" id="Resource_mxk55"]
+script = ExtResource("2_mj4dj")
+item_name = "Closer"
+category = 1
+item_sprite = ExtResource("1_0hv81")
+item_body = ExtResource("1_mxk55")
+metadata/_custom_type_script = "uid://to1isbr65bwb"
+
+[sub_resource type="Resource" id="Resource_mj4dj"]
+script = ExtResource("3_0hv81")
+sprite_sheet = ExtResource("2_5y025")
+metadata/_custom_type_script = "uid://d4mpdx1xawvvp"
+
+[resource]
+script = ExtResource("1_e8myh")
+item_data = SubResource("Resource_mxk55")
+current_stack = 3
+max_stack = 4
+allowed_container = Array[int]([1])
+pack_sprite_by_container = Dictionary[int, ExtResource("3_0hv81")]({
+1: SubResource("Resource_mj4dj")
+})
+metadata/_custom_type_script = "uid://bp4lvgeddtvx5"

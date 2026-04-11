@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bi7ohkp8yga7h"]
+
+[ext_resource type="Script" uid="uid://c0apq1xucjyp8" path="res://Scripts/Scenes/Components/store_section.gd" id="1_8altk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aacfw"]
+size = Vector2(53.760567, 23.930347)
+
+[node name="StoreSection" type="Area2D" unique_id=255849300]
+script = ExtResource("1_8altk")
+section_type = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2030754819]
+scale = Vector2(2.01, 2.01)
+shape = SubResource("RectangleShape2D_aacfw")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

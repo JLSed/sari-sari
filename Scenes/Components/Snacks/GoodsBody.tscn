@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bv685udw74re2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46mtl"]
+radius = 3.0
+height = 18.0
+
+[node name="GoodsBody" type="RigidBody2D" unique_id=1271600159]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=133412238]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786140612]
+shape = SubResource("CapsuleShape2D_46mtl")

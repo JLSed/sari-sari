@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="StoreStat" format=3 uid="uid://d3584p6gepca8"]
+
+[ext_resource type="Script" uid="uid://cn65cuy7dugjx" path="res://Scripts/Regulars/Resources/StoreStats.gd" id="1_jenuf"]
+[ext_resource type="Texture2D" uid="uid://b3x68wg30bh1j" path="res://Assets/Sprites/Store/Inside/store_inside_1.png" id="2_7s73g"]
+
+[resource]
+script = ExtResource("1_jenuf")
+store_texture = ExtResource("2_7s73g")
+attraction_rate = 0.15
+metadata/_custom_type_script = "uid://cn65cuy7dugjx"
