@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cimixywu7jrsx"]
+
+[ext_resource type="PackedScene" uid="uid://c1op5y186du4s" path="res://Scenes/Components/UI/pack_item_ui.tscn" id="1_yqjmp"]
+[ext_resource type="Script" uid="uid://rajhyhbtl4pw" path="res://Scripts/Scenes/Components/UI/container_item_ui.gd" id="2_32uh1"]
+[ext_resource type="Texture2D" uid="uid://dhk6x78vnyik1" path="res://Assets/Sprites/Store/Container/container1.png" id="2_dj68r"]
+
+[node name="ContainerItemUI" unique_id=616446918 instance=ExtResource("1_yqjmp")]
+script = ExtResource("2_32uh1")
+
+[node name="TextureRect" parent="." index="0" unique_id=15907422]
+texture = ExtResource("2_dj68r")
+
+[node name="Label" parent="." index="1" unique_id=1232351352]
+text = "ContainerName"

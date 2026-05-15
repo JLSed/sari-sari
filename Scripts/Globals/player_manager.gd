@@ -2,10 +2,8 @@ extends Node
 
 @export var current_store : StoreStat
 @export var purchased_goods : Array[PurchasedPackEntry]
-
-# Tracks containers bought from the phone but not yet placed in the store
-var unplaced_containers: Array[GoodsContainerData] = []
-
+@export var unlocked_containers : Array[GoodsContainer]
+@export var owned_containers : Array[GoodsContainerEntry] = []
 # Tracks store goods bought from the phone (Dictionary: ItemID -> Amount)
 var warehouse_stock: Dictionary = {}
 
@@ -53,8 +51,11 @@ func remove_pack_quantity(pack: PackData, amount : int) -> int:
 	
 
 
-func add_container(new_container: GoodsContainerData) -> void:
-	unplaced_containers.append(new_container)
+func add_container(new_container: GoodsContainerEntry) -> void:
+	# make sure no duplicates
+	if owned_containers.has(new_container):
+		return
+	owned_containers.append(new_container)
 
 func add_stock(item_id: String, amount: int) -> void:
 	if warehouse_stock.has(item_id):

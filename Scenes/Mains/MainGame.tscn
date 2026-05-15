@@ -6,60 +6,21 @@
 [ext_resource type="Texture2D" uid="uid://b3x68wg30bh1j" path="res://Assets/Sprites/Store/Inside/store_inside_1.png" id="3_r20ap"]
 [ext_resource type="PackedScene" uid="uid://bi7ohkp8yga7h" path="res://Scenes/Components/StoreSection.tscn" id="4_f7kp8"]
 [ext_resource type="Texture2D" uid="uid://cfbqr1vaa83fe" path="res://Assets/Sprites/Environment/radial_texture.png" id="5_4p06b"]
-[ext_resource type="Script" uid="uid://dg1l3n4aalqj5" path="res://Scripts/Scenes/Components/Containers/GoodsContainer.gd" id="6_n4j5h"]
-[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/PickPackUI.tscn" id="7_kpna6"]
-[ext_resource type="Script" uid="uid://csrqcvove5nb8" path="res://Scripts/Regulars/Resources/GoodsContainerData.gd" id="7_r20ap"]
-[ext_resource type="Resource" uid="uid://dfwgnhxe3035b" path="res://Assets/Resources/Container/container2.tres" id="7_yga5l"]
-[ext_resource type="Script" uid="uid://deo6y7tj5y30l" path="res://Scripts/Regulars/Resources/GoodsContainerSlot.gd" id="8_wdjql"]
-[ext_resource type="Texture2D" uid="uid://dhk6x78vnyik1" path="res://Assets/Sprites/Store/Container/container1.png" id="9_nbd5i"]
-[ext_resource type="PackedScene" uid="uid://03e8a1mxywh2" path="res://Scenes/Components/Containers/GoodsContainerSlotButton.tscn" id="10_o677u"]
+[ext_resource type="PackedScene" uid="uid://7xg7s3vic2vm" path="res://Scenes/Components/Containers/GoodsContainer1.tscn" id="6_34a8a"]
+[ext_resource type="PackedScene" uid="uid://c0srwi6tmjmb" path="res://Scenes/Components/UI/pick_container_ui.tscn" id="6_yga5l"]
 
-[sub_resource type="Resource" id="Resource_b4ck2"]
-script = ExtResource("8_wdjql")
-container_id = 1
-metadata/_custom_type_script = "uid://deo6y7tj5y30l"
+[sub_resource type="GDScript" id="GDScript_s812k"]
+script/source = "class_name GoodsContainerData extends Resource
 
-[sub_resource type="Resource" id="Resource_5sswk"]
-script = ExtResource("8_wdjql")
-container_id = 1
-metadata/_custom_type_script = "uid://deo6y7tj5y30l"
-
-[sub_resource type="Resource" id="Resource_7reet"]
-script = ExtResource("8_wdjql")
-container_id = 1
-metadata/_custom_type_script = "uid://deo6y7tj5y30l"
-
-[sub_resource type="Resource" id="Resource_4wji2"]
-script = ExtResource("8_wdjql")
-container_id = 1
-metadata/_custom_type_script = "uid://deo6y7tj5y30l"
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wjf6a"]
-
-[sub_resource type="PackedScene" id="PackedScene_wda1e"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("GoodsContainer1", "Node2D", "script", "PickPackUI", "pack_per_slot", "pack_sprites", "slot_buttons", "ContainerSprite", "Sprite2D", "texture", "Pack1", "AnimatedSprite2D", "position", "scale", "sprite_frames", "Pack2", "AnimatedSprite2D", "position", "scale", "sprite_frames", "Pack3", "AnimatedSprite2D", "position", "scale", "sprite_frames", "Pack4", "AnimatedSprite2D", "position", "scale", "sprite_frames", "GoodsContainerSlotButton1", "offset_left", "offset_top", "offset_right", "offset_bottom", "GoodsContainerSlotButton2", "offset_left", "offset_top", "offset_right", "offset_bottom", "GoodsContainerSlotButton3", "offset_left", "offset_top", "offset_right", "offset_bottom", "GoodsContainerSlotButton4", "offset_left", "offset_top", "offset_right", "offset_bottom"),
-"node_count": 10,
-"node_ids": PackedInt32Array(1401081475, 1445098297, 1139637673, 1075855518, 50980876, 812731330, 236369935, 2017382160, 128975793, 706823830),
-"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 3, 1, 4, 2, 1073741829, 3, 1073741830, 4, 0, 1073741824, 0, 8, 7, -1, 1, 9, 5, 0, 1073741825, 0, 11, 10, -1, 3, 12, 6, 13, 7, 14, 8, 0, 1073741826, 0, 16, 15, -1, 3, 17, 9, 18, 10, 19, 11, 0, 1073741827, 0, 21, 20, -1, 3, 22, 12, 23, 13, 24, 14, 0, 1073741828, 0, 26, 25, -1, 3, 27, 15, 28, 16, 29, 17, 0, 1073741829, 0, 2147483647, 30, 18, 4, 31, 19, 32, 20, 33, 21, 34, 22, 0, 1073741830, 0, 2147483647, 35, 23, 4, 36, 24, 37, 25, 38, 26, 39, 27, 0, 1073741831, 0, 2147483647, 40, 28, 4, 41, 29, 42, 30, 43, 31, 44, 32, 0, 1073741832, 0, 2147483647, 45, 33, 4, 46, 34, 47, 35, 48, 36, 49, 37, 0),
-"variants": [ExtResource("6_n4j5h"), ExtResource("7_kpna6"), Array[ExtResource("8_wdjql")]([SubResource("Resource_b4ck2"), SubResource("Resource_5sswk"), SubResource("Resource_7reet"), SubResource("Resource_4wji2")]), [NodePath("Pack1"), NodePath("Pack2"), NodePath("Pack3"), NodePath("Pack4")], [NodePath("GoodsContainerSlotButton1"), NodePath("GoodsContainerSlotButton2"), NodePath("GoodsContainerSlotButton3"), NodePath("GoodsContainerSlotButton4")], ExtResource("9_nbd5i"), Vector2(-46, 3), Vector2(0.5, 0.5), SubResource("SpriteFrames_wjf6a"), Vector2(-16, 3), Vector2(0.5, 0.5), SubResource("SpriteFrames_wjf6a"), Vector2(16, 3), Vector2(0.5, 0.5), SubResource("SpriteFrames_wjf6a"), Vector2(46, 3), Vector2(0.5, 0.5), SubResource("SpriteFrames_wjf6a"), ExtResource("10_o677u"), -54.0, -7.0, -38.0, 9.0, ExtResource("10_o677u"), -24.0, -7.0, -8.0, 9.0, ExtResource("10_o677u"), 8.0, -7.0, 24.0, 9.0, ExtResource("10_o677u"), 38.0, -7.0, 54.0, 9.0],
-"version": 3
-}
+@export var container_name: String
+@export var placement_type: Enums.PlacementType
+@export var scene_reference: PackedScene
+"
 
 [sub_resource type="Resource" id="Resource_bkl77"]
-script = ExtResource("7_r20ap")
+script = SubResource("GDScript_s812k")
 container_name = "Starting Container"
-scene_reference = SubResource("PackedScene_wda1e")
-metadata/_custom_type_script = "uid://csrqcvove5nb8"
-
-[sub_resource type="Resource" id="Resource_n4j5h"]
-script = ExtResource("7_r20ap")
-metadata/_custom_type_script = "uid://csrqcvove5nb8"
+scene_reference = ExtResource("6_34a8a")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r20ap"]
 shader = ExtResource("3_kk8dm")
@@ -72,8 +33,9 @@ shader_parameter/samples = 30
 [sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_yga5l"]
 segments = PackedVector2Array(28.402954, -1.2273331, -36.642242, -0.8371353, -38.79677, -1.5553131, -39.507767, -125.9252, 31.823868, -2.0340958, 36.372314, -123.16643)
 
-[node name="MainGame" type="Node2D" unique_id=1400300985 groups=["main_game_scene"]]
+[node name="MainGame" type="Node2D" unique_id=1400300985 node_paths=PackedStringArray("store_sections") groups=["main_game_scene"]]
 script = ExtResource("1_pwsq3")
+store_sections = [NodePath("StoreSectionTL"), NodePath("StoreSectionBL"), NodePath("StoreSectionTR"), NodePath("StoreSectionBR")]
 
 [node name="NightBulb" type="PointLight2D" parent="." unique_id=1635104361]
 visible = false
@@ -99,23 +61,25 @@ centered = false
 
 [node name="StoreSectionTL" parent="." unique_id=1064057675 instance=ExtResource("4_f7kp8")]
 position = Vector2(64, 34)
+monitorable = false
+PickSectionUI = ExtResource("6_yga5l")
 section_type = 0
 current_container = SubResource("Resource_bkl77")
 
 [node name="StoreSectionBL" parent="." unique_id=255849300 instance=ExtResource("4_f7kp8")]
 position = Vector2(64, 84)
-section_type = 0
-current_container = ExtResource("7_yga5l")
+monitorable = false
+section_type = 1
 
 [node name="StoreSectionTR" parent="." unique_id=207290342 instance=ExtResource("4_f7kp8")]
 position = Vector2(235, 34)
+monitorable = false
 section_type = 0
-current_container = SubResource("Resource_n4j5h")
 
 [node name="StoreSectionBR" parent="." unique_id=2144025378 instance=ExtResource("4_f7kp8")]
 position = Vector2(235, 84)
-section_type = 0
-current_container = ExtResource("7_yga5l")
+monitorable = false
+section_type = 1
 
 [node name="DayNightShader" type="ColorRect" parent="." unique_id=1257970847]
 material = SubResource("ShaderMaterial_r20ap")
@@ -141,6 +105,19 @@ theme_override_font_sizes/font_size = 4
 text = "Light On"
 metadata/_edit_use_anchors_ = true
 
+[node name="ContainerButton" type="Button" parent="Control" unique_id=62037976]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13333334
+anchor_right = 0.13333334
+anchor_bottom = 0.014814815
+offset_left = 1.0
+offset_right = 40.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 4
+text = "Edit Container"
+metadata/_edit_use_anchors_ = true
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=863466439]
 position = Vector2(151.33925, 124.327644)
 
@@ -148,3 +125,4 @@ position = Vector2(151.33925, 124.327644)
 shape = SubResource("ConcavePolygonShape2D_yga5l")
 
 [connection signal="pressed" from="Control/LightButton" to="." method="_on_light_button_pressed"]
+[connection signal="pressed" from="Control/ContainerButton" to="." method="_on_container_button_pressed"]

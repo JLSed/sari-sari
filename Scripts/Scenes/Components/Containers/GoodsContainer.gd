@@ -1,14 +1,18 @@
 class_name GoodsContainer extends Node2D
 
+
+@export var container_texture : Texture2D
 @export var PickPackUI : PackedScene
 @export var pack_per_slot : Array[GoodsContainerSlot]
 @export var pack_sprites : Array[AnimatedSprite2D]
 @export var slot_buttons : Array[BaseButton]
+@onready var container_sprite: Sprite2D = $ContainerSprite
+
 var current_index: int = -1
 
 func _ready() -> void:
+	container_sprite.texture = container_texture
 	for i in range(slot_buttons.size()):
-		print(i)
 		slot_buttons[i].pressed.connect(_on_slot_button_pressed.bind(i))
 
 func _on_slot_button_pressed(slot_index : int) -> void:

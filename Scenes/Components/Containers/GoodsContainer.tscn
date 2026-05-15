@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djox4kn52krsu"]
 
 [ext_resource type="Script" uid="uid://dg1l3n4aalqj5" path="res://Scripts/Scenes/Components/Containers/GoodsContainer.gd" id="1_rgy3i"]
-[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/PickPackUI.tscn" id="2_4f6lv"]
+[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/pick_pack_ui.tscn" id="2_4f6lv"]
 [ext_resource type="PackedScene" uid="uid://03e8a1mxywh2" path="res://Scenes/Components/Containers/GoodsContainerSlotButton.tscn" id="3_4f6lv"]
 [ext_resource type="Script" uid="uid://deo6y7tj5y30l" path="res://Scripts/Regulars/Resources/GoodsContainerSlot.gd" id="3_jyoba"]
 
@@ -32,7 +32,7 @@ pack_per_slot = Array[ExtResource("3_jyoba")]([SubResource("Resource_b6lwh"), Su
 pack_sprites = [NodePath("Pack1"), NodePath("Pack2"), NodePath("Pack3"), NodePath("Pack4")]
 slot_buttons = [NodePath("GoodsContainerSlotButton1"), NodePath("GoodsContainerSlotButton2"), NodePath("GoodsContainerSlotButton3"), NodePath("GoodsContainerSlotButton4")]
 
-[node name="ContainerImage" type="Sprite2D" parent="." unique_id=1445098297]
+[node name="ContainerSprite" type="Sprite2D" parent="." unique_id=1445098297]
 
 [node name="Pack1" type="AnimatedSprite2D" parent="." unique_id=1338499008]
 position = Vector2(-46, 3)

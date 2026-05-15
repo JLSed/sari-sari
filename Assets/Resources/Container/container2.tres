@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="GoodsContainerData" format=3 uid="uid://dfwgnhxe3035b"]
+[gd_resource type="Resource" script_class="GoodsContainerEntry" format=3 uid="uid://dfwgnhxe3035b"]
 
 [ext_resource type="PackedScene" uid="uid://c5omrvrvykecc" path="res://Scenes/Components/Containers/GoodsContainer2.tscn" id="1_kyu0e"]
-[ext_resource type="Script" uid="uid://csrqcvove5nb8" path="res://Scripts/Regulars/Resources/GoodsContainerData.gd" id="1_xsor8"]
+[ext_resource type="Script" uid="uid://dl0c0ncwhpd31" path="res://Scripts/Regulars/Resources/goodscontainer_entry.gd" id="1_xsor8"]
 
 [resource]
 script = ExtResource("1_xsor8")
-container_name = "Boxes"
-scene_reference = ExtResource("1_kyu0e")
-metadata/_custom_type_script = "uid://csrqcvove5nb8"
+container_name = "Basta2"
+allowed_placement = Array[int]([1])
+container_scene = ExtResource("1_kyu0e")
+metadata/_custom_type_script = "uid://dl0c0ncwhpd31"

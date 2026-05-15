@@ -5,9 +5,11 @@ extends Node2D
 @onready var night_modulate: CanvasModulate = $NightModulate
 @onready var night_bulb: PointLight2D = $NightBulb
 @onready var light_button: Button = $Control/LightButton
+@onready var container_button: Button = $Control/ContainerButton
 
 
-
+@export_category("Store Section")
+@export var store_sections : Array[StoreSection]
 @export_category("DayNight Shader Parameter")
 @export var day_color : Color = Color(1.0, 1.0, 1.0, 1.0)
 @export var night_color : Color = Color(0.489, 0.551, 0.844, 1.0)
@@ -15,13 +17,16 @@ extends Node2D
 @export var max_light_energy : float = 1.0
 @export var time_of_day : float = 0.3
 @export var day_speed : float = 0.05
+var container_edit_mode : bool = false
 
 func  _ready() -> void:
 	front_store_image.texture = PlayerManager.current_store.store_texture
+	for store_section in store_sections:
+		store_section.signal_clicked.connect(_on_section_pressed)
+		store_section.set_container_edit_mode(container_edit_mode)
 
 func _process(delta: float) -> void:
-	
-	
+
 	# ---Day and Night Stuff ---
 	time_of_day += day_speed * delta
 	var sun_x : float = time_of_day
@@ -49,3 +54,12 @@ func _on_light_button_pressed() -> void:
 		light_button.text = "Light Off"
 	else:
 		light_button.text = "Light On"
+
+func _on_section_pressed(section_type: Enums.SectionType) -> void:
+	print("this is called", section_type)
+
+func _on_container_button_pressed() -> void:
+	container_edit_mode = !container_edit_mode
+	container_button.text = "Done" if container_edit_mode else "Edit Container"
+	for store_section in store_sections:
+		store_section.set_container_edit_mode(container_edit_mode)

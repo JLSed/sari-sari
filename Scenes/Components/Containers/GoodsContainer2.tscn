@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5omrvrvykecc"]
 
 [ext_resource type="Script" uid="uid://dg1l3n4aalqj5" path="res://Scripts/Scenes/Components/Containers/GoodsContainer.gd" id="1_1tc03"]
-[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/PickPackUI.tscn" id="2_5i0wk"]
+[ext_resource type="PackedScene" uid="uid://dlxbdp3ke7jxo" path="res://Scenes/Components/UI/pick_pack_ui.tscn" id="2_5i0wk"]
 [ext_resource type="Script" uid="uid://deo6y7tj5y30l" path="res://Scripts/Regulars/Resources/GoodsContainerSlot.gd" id="3_1bd6u"]
 [ext_resource type="Texture2D" uid="uid://f52naisyacfu" path="res://Assets/Sprites/Store/Container/container2.png" id="3_dlruh"]
 [ext_resource type="PackedScene" uid="uid://03e8a1mxywh2" path="res://Scenes/Components/Containers/GoodsContainerSlotButton.tscn" id="6_oswfd"]
@@ -30,6 +30,8 @@ metadata/_custom_type_script = "uid://deo6y7tj5y30l"
 
 [node name="GoodsContainer" type="Node2D" unique_id=1401081475 node_paths=PackedStringArray("pack_sprites", "slot_buttons")]
 script = ExtResource("1_1tc03")
+container_name = "Basta 2"
+container_texture = ExtResource("3_dlruh")
 PickPackUI = ExtResource("2_5i0wk")
 pack_per_slot = Array[ExtResource("3_1bd6u")]([SubResource("Resource_1tc03"), SubResource("Resource_5i0wk"), SubResource("Resource_ontlt"), SubResource("Resource_oswfd")])
 pack_sprites = [NodePath("Pack1"), NodePath("Pack2"), NodePath("Pack3"), NodePath("Pack4")]
@@ -55,7 +57,7 @@ position = Vector2(48.153095, 10.179326)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_ie0qr")
 
-[node name="ContainerImage" type="Sprite2D" parent="." unique_id=1445098297]
+[node name="ContainerSprite" type="Sprite2D" parent="." unique_id=1445098297]
 position = Vector2(-9.536742e-07, 9.999999)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_dlruh")
