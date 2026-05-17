@@ -4,10 +4,11 @@
 [ext_resource type="Shader" uid="uid://b6lt78eeb1gnc" path="res://Scripts/Shaders/DayNightShader.gdshader" id="3_kk8dm"]
 [ext_resource type="Texture2D" uid="uid://dmxwe1cy7wthf" path="res://Assets/Sprites/Store/street_view2.png" id="3_n4j5h"]
 [ext_resource type="Texture2D" uid="uid://b3x68wg30bh1j" path="res://Assets/Sprites/Store/Inside/store_inside_1.png" id="3_r20ap"]
+[ext_resource type="Script" uid="uid://cm8chxdxtoh6f" path="res://Scripts/Globals/store_manager.gd" id="3_yga5l"]
 [ext_resource type="PackedScene" uid="uid://bi7ohkp8yga7h" path="res://Scenes/Components/StoreSection.tscn" id="4_f7kp8"]
 [ext_resource type="Texture2D" uid="uid://cfbqr1vaa83fe" path="res://Assets/Sprites/Environment/radial_texture.png" id="5_4p06b"]
 [ext_resource type="PackedScene" uid="uid://7xg7s3vic2vm" path="res://Scenes/Components/Containers/GoodsContainer1.tscn" id="6_34a8a"]
-[ext_resource type="PackedScene" uid="uid://c0srwi6tmjmb" path="res://Scenes/Components/UI/pick_container_ui.tscn" id="6_yga5l"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="9_34a8a"]
 
 [sub_resource type="GDScript" id="GDScript_s812k"]
 script/source = "class_name GoodsContainerData extends Resource
@@ -36,6 +37,7 @@ segments = PackedVector2Array(28.402954, -1.2273331, -36.642242, -0.8371353, -38
 [node name="MainGame" type="Node2D" unique_id=1400300985 node_paths=PackedStringArray("store_sections") groups=["main_game_scene"]]
 script = ExtResource("1_pwsq3")
 store_sections = [NodePath("StoreSectionTL"), NodePath("StoreSectionBL"), NodePath("StoreSectionTR"), NodePath("StoreSectionBR")]
+time_incrementor = 2.0
 
 [node name="NightBulb" type="PointLight2D" parent="." unique_id=1635104361]
 visible = false
@@ -47,6 +49,7 @@ texture = ExtResource("5_4p06b")
 texture_scale = 0.8
 
 [node name="StoreManager" type="Node2D" parent="." unique_id=2040221366]
+script = ExtResource("3_yga5l")
 
 [node name="StreetView" type="Sprite2D" parent="." unique_id=1732702509]
 light_mask = 0
@@ -62,8 +65,6 @@ centered = false
 [node name="StoreSectionTL" parent="." unique_id=1064057675 instance=ExtResource("4_f7kp8")]
 position = Vector2(64, 34)
 monitorable = false
-PickSectionUI = ExtResource("6_yga5l")
-section_type = 0
 current_container = SubResource("Resource_bkl77")
 
 [node name="StoreSectionBL" parent="." unique_id=255849300 instance=ExtResource("4_f7kp8")]
@@ -74,7 +75,6 @@ section_type = 1
 [node name="StoreSectionTR" parent="." unique_id=207290342 instance=ExtResource("4_f7kp8")]
 position = Vector2(235, 34)
 monitorable = false
-section_type = 0
 
 [node name="StoreSectionBR" parent="." unique_id=2144025378 instance=ExtResource("4_f7kp8")]
 position = Vector2(235, 84)
@@ -118,11 +118,40 @@ theme_override_font_sizes/font_size = 4
 text = "Edit Container"
 metadata/_edit_use_anchors_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=863466439]
+[node name="StartDayButton" type="Button" parent="Control" unique_id=997572751]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.564743
+offset_top = -41.66382
+offset_right = 55.435257
+offset_bottom = -10.663818
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start the Day"
+
+[node name="TimeLabel" type="Label" parent="Control" unique_id=1389458945]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_34a8a")
+text = "1:23"
+horizontal_alignment = 2
+
+[node name="Temporary" type="StaticBody2D" parent="." unique_id=863466439]
 position = Vector2(151.33925, 124.327644)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1516276238]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Temporary" unique_id=1516276238]
 shape = SubResource("ConcavePolygonShape2D_yga5l")
 
 [connection signal="pressed" from="Control/LightButton" to="." method="_on_light_button_pressed"]
 [connection signal="pressed" from="Control/ContainerButton" to="." method="_on_container_button_pressed"]
+[connection signal="pressed" from="Control/StartDayButton" to="." method="_on_start_day_button_pressed"]
