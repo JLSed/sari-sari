@@ -21,6 +21,7 @@ config/icon="res://Assets/Icons/icon.svg"
 Enums="*uid://bml2vwqhpxjt6"
 SignalBus="*uid://4sg2mgr56elj"
 PlayerManager="*uid://ch38dfo383iqr"
+StoreManager="*uid://cm8chxdxtoh6f"
 
 [debug]
 

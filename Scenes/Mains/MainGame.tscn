@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cfbqr1vaa83fe" path="res://Assets/Sprites/Environment/radial_texture.png" id="5_4p06b"]
 [ext_resource type="PackedScene" uid="uid://7xg7s3vic2vm" path="res://Scenes/Components/Containers/GoodsContainer1.tscn" id="6_34a8a"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="9_34a8a"]
+[ext_resource type="Texture2D" uid="uid://cohitxj3b8a7g" path="res://Assets/UI/edit_container_icon.png" id="9_r20ap"]
+[ext_resource type="Texture2D" uid="uid://bs5htwsswmpvd" path="res://Assets/UI/light_toggle_icon.png" id="10_kk8dm"]
 
 [sub_resource type="GDScript" id="GDScript_s812k"]
 script/source = "class_name GoodsContainerData extends Resource
@@ -30,6 +32,14 @@ shader_parameter/density = 0.30000001425
 shader_parameter/decay = 0.50000002375
 shader_parameter/weight = 0.05
 shader_parameter/samples = 30
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r20ap"]
+atlas = ExtResource("10_kk8dm")
+region = Rect2(21, 0, 21, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4p06b"]
+atlas = ExtResource("10_kk8dm")
+region = Rect2(0, 0, 21, 20)
 
 [sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_yga5l"]
 segments = PackedVector2Array(28.402954, -1.2273331, -36.642242, -0.8371353, -38.79677, -1.5553131, -39.507767, -125.9252, 31.823868, -2.0340958, 36.372314, -123.16643)
@@ -62,7 +72,7 @@ light_mask = 3
 texture = ExtResource("3_r20ap")
 centered = false
 
-[node name="StoreSectionTL" parent="." unique_id=1064057675 instance=ExtResource("4_f7kp8")]
+[node name="StoreSectionTL" parent="." unique_id=1064057675 groups=["main_game_scene"] instance=ExtResource("4_f7kp8")]
 position = Vector2(64, 34)
 monitorable = false
 current_container = SubResource("Resource_bkl77")
@@ -96,28 +106,6 @@ offset_right = 300.0
 offset_bottom = 135.0
 mouse_filter = 2
 
-[node name="LightButton" type="Button" parent="Control" unique_id=1651264746]
-layout_mode = 0
-offset_left = 1.0
-offset_right = 40.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 4
-text = "Light On"
-metadata/_edit_use_anchors_ = true
-
-[node name="ContainerButton" type="Button" parent="Control" unique_id=62037976]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.13333334
-anchor_right = 0.13333334
-anchor_bottom = 0.014814815
-offset_left = 1.0
-offset_right = 40.0
-offset_bottom = 12.0
-theme_override_font_sizes/font_size = 4
-text = "Edit Container"
-metadata/_edit_use_anchors_ = true
-
 [node name="StartDayButton" type="Button" parent="Control" unique_id=997572751]
 layout_mode = 1
 anchors_preset = 7
@@ -125,12 +113,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -54.564743
-offset_top = -41.66382
-offset_right = 55.435257
-offset_bottom = -10.663818
+offset_left = -41.876984
+offset_top = -27.0
+offset_right = 42.123016
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 12
 text = "Start the Day"
 
 [node name="TimeLabel" type="Label" parent="Control" unique_id=1389458945]
@@ -146,12 +135,42 @@ theme_override_fonts/font = ExtResource("9_34a8a")
 text = "1:23"
 horizontal_alignment = 2
 
+[node name="LightButton" type="CheckButton" parent="Control" unique_id=457566018]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -25.24562
+offset_right = 33.0
+offset_bottom = 2.7543793
+grow_vertical = 0
+scale = Vector2(0.9, 0.9)
+theme_override_icons/checked = SubResource("AtlasTexture_r20ap")
+theme_override_icons/unchecked = SubResource("AtlasTexture_4p06b")
+flat = true
+
+[node name="ContainerButton" type="Button" parent="Control" unique_id=62037976]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.099
+anchor_top = 1.0520686
+anchor_right = 0.09603704
+anchor_bottom = 1.0520686
+offset_top = -28.0
+offset_right = 39.0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 4
+icon = ExtResource("9_r20ap")
+flat = true
+metadata/_edit_use_anchors_ = true
+
 [node name="Temporary" type="StaticBody2D" parent="." unique_id=863466439]
 position = Vector2(151.33925, 124.327644)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Temporary" unique_id=1516276238]
 shape = SubResource("ConcavePolygonShape2D_yga5l")
 
-[connection signal="pressed" from="Control/LightButton" to="." method="_on_light_button_pressed"]
-[connection signal="pressed" from="Control/ContainerButton" to="." method="_on_container_button_pressed"]
 [connection signal="pressed" from="Control/StartDayButton" to="." method="_on_start_day_button_pressed"]
+[connection signal="toggled" from="Control/LightButton" to="." method="_on_light_button_toggled"]
+[connection signal="pressed" from="Control/ContainerButton" to="." method="_on_container_button_pressed"]

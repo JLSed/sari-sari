@@ -1,6 +1,5 @@
 class_name GoodsContainer extends Node2D
 
-
 @export var container_texture : Texture2D
 @export var PickPackUI : PackedScene
 @export var pack_per_slot : Array[GoodsContainerSlot]
@@ -13,11 +12,27 @@ var current_index: int = -1
 func _ready() -> void:
 	container_sprite.texture = container_texture
 	for i in range(slot_buttons.size()):
+		# make sure the current pack is unique
+		pack_per_slot[i].resource_local_to_scene = true
 		slot_buttons[i].pressed.connect(_on_slot_button_pressed.bind(i))
+	StoreManager.phase_changed.connect(_on_phase_changed)
+
+func _on_phase_changed(is_day: bool) -> void:
+	_refresh_slot_buttons_for_phase(is_day)
+
+func _refresh_slot_buttons_for_phase(is_day: bool) -> void:
+	for i in range(slot_buttons.size()):
+		var has_pack:= pack_per_slot[i].current_pack != null
+		slot_buttons[i].visible = !is_day or has_pack
 
 func _on_slot_button_pressed(slot_index : int) -> void:
-	print(slot_index)
 	current_index = slot_index
+	#for preparation phase
+	if !StoreManager.is_day_phase:
+		showPickPackUI()
+		return
+	
+	#for day phase
 	var pack : PackData = pack_per_slot[current_index].current_pack
 	if pack == null:
 		showPickPackUI()
@@ -41,7 +56,10 @@ func showPickPackUI() -> void:
 	new_pickPackUI.pack_item_placed.connect(_pack_placed)
 
 func _pack_placed(pack_entry : PurchasedPackEntry) -> void:
-	print(pack_entry)
+	#prevent placing packs while in day phase
+	if StoreManager.is_day_phase:
+		return
+	
 	if current_index == -1:
 		return
 	var slot: GoodsContainerSlot = pack_per_slot[current_index]

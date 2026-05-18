@@ -4,7 +4,6 @@ extends Node2D
 @onready var day_night_shader: ColorRect = $DayNightShader
 @onready var night_modulate: CanvasModulate = $NightModulate
 @onready var night_bulb: PointLight2D = $NightBulb
-@onready var light_button: Button = $Control/LightButton
 @onready var container_button: Button = $Control/ContainerButton
 @onready var start_day_button: Button = $Control/StartDayButton
 @onready var time_label: Label = $Control/TimeLabel
@@ -14,7 +13,6 @@ extends Node2D
 @export var store_sections : Array[StoreSection]
 @export_category("Day Phase Parameter")
 @export var time_incrementor : float = 30.0 #in seconds
-@export var is_day_phase : bool = false
 @export var current_minutes : int = START_TIME
 var START_TIME : int = 6*60 #6:00
 var END_TIME : int = 23*60 #23:00
@@ -35,10 +33,11 @@ func  _ready() -> void:
 		store_section.signal_clicked.connect(_on_section_pressed)
 		store_section.set_container_edit_mode(container_edit_mode)
 	
-	_enter_preparation_phase()
+	StoreManager.phase_changed.connect(_on_phase_changed)
+	StoreManager.enter_preparation_phase()
 
 func _process(delta: float) -> void:
-	if !is_day_phase:
+	if !StoreManager.is_day_phase:
 		return
 
 	tick_accum += delta
@@ -47,15 +46,17 @@ func _process(delta: float) -> void:
 		current_minutes = min(current_minutes + INCREMENT_VALUE, END_TIME)
 		_update_cloat_and_lighting()
 
-
 	# ---Day and Night Stuff ---
-func _enter_preparation_phase() -> void:
-	is_day_phase = false
+func _on_phase_changed(is_day: bool) -> void:
+	start_day_button.visible = !is_day
+	container_button.visible = !is_day
 	current_minutes = START_TIME
 	tick_accum = 0.0
-	start_day_button.visible = true
-	container_button.visible = true
 	_update_cloat_and_lighting()
+	if is_day:
+		container_edit_mode = false
+		for section in store_sections:
+			section.set_container_edit_mode(false)
 
 func _update_cloat_and_lighting() -> void:
 	var hours := current_minutes / 60
@@ -75,25 +76,16 @@ func _update_cloat_and_lighting() -> void:
 	#light bulb at night
 	night_bulb.energy = max_light_energy * (1.0 - intensity_multiplier)
 
-
-func _on_light_button_pressed() -> void:
-	night_bulb.visible = !night_bulb.visible
-	if night_bulb.visible == true:
-		light_button.text = "Light Off"
-	else:
-		light_button.text = "Light On"
-
 func _on_section_pressed(section_type: Enums.SectionType) -> void:
 	print("this is called", section_type)
 
 func _on_container_button_pressed() -> void:
 	container_edit_mode = !container_edit_mode
-	container_button.text = "Done" if container_edit_mode else "Edit Container"
 	for store_section in store_sections:
 		store_section.set_container_edit_mode(container_edit_mode)
 
-
 func _on_start_day_button_pressed() -> void:
-	is_day_phase = true
-	start_day_button.visible = false
-	container_button.visible = false
+	StoreManager.enter_day_phase()
+
+func _on_light_button_toggled(toggled_on: bool) -> void:
+	night_bulb.visible = toggled_on
