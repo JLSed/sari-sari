@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://cpaukns4o7xbu"]
+
+[ext_resource type="Script" uid="uid://c74j6u8u48r0m" path="res://Scripts/Scenes/Components/UI/shopy_app.gd" id="1_0ibq5"]
+[ext_resource type="Texture2D" uid="uid://2fltm23xj2d4" path="res://Assets/UI/shopy_background.png" id="1_wor81"]
+[ext_resource type="FontFile" uid="uid://cghkwi3mwcvpa" path="res://Assets/Fonts/monogram-extended-italic.ttf" id="2_ywswq"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="4_secge"]
+[ext_resource type="Texture2D" uid="uid://cnhv61jdclsqq" path="res://Assets/UI/shopy_itemcard_background.png" id="5_758eq"]
+
+[node name="Shopy" type="Control" unique_id=725333936]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ibq5")
+
+[node name="ShopyBackground" type="TextureRect" parent="." unique_id=208968857]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -135.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_wor81")
+
+[node name="Label" type="Label" parent="ShopyBackground" unique_id=2059991627]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.189117
+offset_top = 13.65163
+offset_right = 20.810883
+offset_bottom = 36.65163
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_ywswq")
+text = "Shopy"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="ShopyBackground" unique_id=590896886]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.37506
+offset_top = 13.65163
+offset_right = -23.375061
+offset_bottom = 28.65163
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_colors/font_focus_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_colors/font_pressed_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_colors/font_hover_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("4_secge")
+theme_override_font_sizes/font_size = 8
+text = "Go Back"
+flat = true
+
+[node name="HScrollBar" type="ScrollContainer" parent="ShopyBackground" unique_id=1941472164]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -105.0
+offset_right = 57.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ShopyBackground/HScrollBar" unique_id=127926745]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ItemContainer" type="GridContainer" parent="ShopyBackground/HScrollBar/MarginContainer" unique_id=1332902087]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="ShopyBackground/HScrollBar/MarginContainer/ItemContainer" unique_id=1650492886]
+custom_minimum_size = Vector2(53, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("5_758eq")
+
+[node name="TextureRect2" type="TextureRect" parent="ShopyBackground/HScrollBar/MarginContainer/ItemContainer" unique_id=333341621]
+custom_minimum_size = Vector2(53, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("5_758eq")
+
+[node name="TextureRect3" type="TextureRect" parent="ShopyBackground/HScrollBar/MarginContainer/ItemContainer" unique_id=1604670352]
+custom_minimum_size = Vector2(53, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("5_758eq")
+
+[node name="TextureRect4" type="TextureRect" parent="ShopyBackground/HScrollBar/MarginContainer/ItemContainer" unique_id=1473855372]
+custom_minimum_size = Vector2(53, 64)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("5_758eq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1327024427]
+
+[connection signal="pressed" from="ShopyBackground/BackButton" to="." method="_on_back_button_pressed"]

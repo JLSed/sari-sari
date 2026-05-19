@@ -4,10 +4,10 @@ extends Node2D
 @onready var day_night_shader: ColorRect = $DayNightShader
 @onready var night_modulate: CanvasModulate = $NightModulate
 @onready var night_bulb: PointLight2D = $NightBulb
-@onready var container_button: Button = $Control/ContainerButton
-@onready var start_day_button: Button = $Control/StartDayButton
-@onready var time_label: Label = $Control/TimeLabel
-
+@onready var container_button: TextureButton = $UI/ContainerButton
+@onready var start_day_button: Button = $UI/StartDayButton
+@onready var time_label: Label = $UI/TimeLabel
+@onready var phone_ui_animation: AnimationPlayer = $PhoneUIAnimation
 
 @export_category("Store Section")
 @export var store_sections : Array[StoreSection]
@@ -89,3 +89,6 @@ func _on_start_day_button_pressed() -> void:
 
 func _on_light_button_toggled(toggled_on: bool) -> void:
 	night_bulb.visible = toggled_on
+
+func _on_phone_button_pressed() -> void:
+	phone_ui_animation.play("opening_phone")

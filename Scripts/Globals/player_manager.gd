@@ -2,7 +2,6 @@ extends Node
 
 @export var current_store : StoreStat
 @export var purchased_goods : Array[PurchasedPackEntry]
-@export var unlocked_containers : Array[GoodsContainer]
 @export var owned_containers : Array[GoodsContainerEntry] = []
 # Tracks store goods bought from the phone (Dictionary: ItemID -> Amount)
 var warehouse_stock: Dictionary = {}

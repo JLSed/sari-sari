@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dvd0c8ikcxf7g"]
+
+[ext_resource type="Script" uid="uid://b2u7u7byl3y6w" path="res://Scripts/Scenes/Components/UI/container_shop_app.gd" id="1_smoi6"]
+[ext_resource type="Texture2D" uid="uid://ccc8pxkk2r1o5" path="res://Assets/UI/containershop_background.png" id="2_smoi6"]
+[ext_resource type="FontFile" uid="uid://cghkwi3mwcvpa" path="res://Assets/Fonts/monogram-extended-italic.ttf" id="3_v5wwt"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="4_eeyqp"]
+
+[node name="ContainerShop" type="Control" unique_id=887013993]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_smoi6")
+
+[node name="ShopyBackground" type="TextureRect" parent="." unique_id=1190830837]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -135.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_smoi6")
+
+[node name="Label" type="Label" parent="ShopyBackground" unique_id=891848982]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.895447
+offset_top = 12.09511
+offset_right = 21.104553
+offset_bottom = 35.095108
+grow_horizontal = 2
+theme_override_constants/line_spacing = -5
+theme_override_fonts/font = ExtResource("3_v5wwt")
+theme_override_font_sizes/font_size = 12
+text = "Conty
+Shop"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="ShopyBackground" unique_id=382223472]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.641228
+offset_top = 13.913041
+offset_right = -22.666985
+offset_bottom = 28.91304
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_focus_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("4_eeyqp")
+theme_override_font_sizes/font_size = 8
+text = "Go Back"
+flat = true
+
+[connection signal="pressed" from="ShopyBackground/BackButton" to="." method="_on_back_button_pressed"]
