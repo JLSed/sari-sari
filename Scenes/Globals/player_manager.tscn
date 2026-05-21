@@ -1,35 +1,8 @@
 [gd_scene format=3 uid="uid://ch38dfo383iqr"]
 
 [ext_resource type="Script" uid="uid://bp088h7sy1y3s" path="res://Scripts/Globals/player_manager.gd" id="1_5j7nk"]
-[ext_resource type="Resource" uid="uid://cyal61kx6plim" path="res://Assets/Resources/Store/store1.tres" id="2_kek0o"]
-[ext_resource type="Script" uid="uid://jdq1cx1mg4x6" path="res://Scripts/Regulars/Resources/purchased_pack_entry.gd" id="3_kum8y"]
-[ext_resource type="Resource" uid="uid://dv5dx33k5xij" path="res://Assets/Resources/Pack/closerInPack.tres" id="4_kum8y"]
-[ext_resource type="Resource" uid="uid://6cqvaewfwkwp" path="res://Assets/Resources/Pack/stikuInPack.tres" id="5_q54ao"]
-[ext_resource type="Resource" uid="uid://bh3egumhe3mrs" path="res://Assets/Resources/Pack/lumpiaInPack.tres" id="6_kum8y"]
-[ext_resource type="Script" uid="uid://dl0c0ncwhpd31" path="res://Scripts/Regulars/Resources/goodscontainer_entry.gd" id="7_ctksh"]
-[ext_resource type="Resource" uid="uid://dfwgnhxe3035b" path="res://Assets/Resources/Container/container2.tres" id="8_htey3"]
-[ext_resource type="Resource" uid="uid://b6iwo3e6nhvh1" path="res://Assets/Resources/Container/container1.tres" id="9_auwi8"]
-
-[sub_resource type="Resource" id="Resource_q54ao"]
-script = ExtResource("3_kum8y")
-pack_data = ExtResource("6_kum8y")
-quantity = 24
-metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
-
-[sub_resource type="Resource" id="Resource_ctksh"]
-script = ExtResource("3_kum8y")
-pack_data = ExtResource("4_kum8y")
-quantity = 17
-metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
-
-[sub_resource type="Resource" id="Resource_htey3"]
-script = ExtResource("3_kum8y")
-pack_data = ExtResource("5_q54ao")
-quantity = 68
-metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
+[ext_resource type="Resource" uid="uid://bc48orcxmhc4e" path="res://Assets/Resources/Player/player_save.tres" id="2_kek0o"]
 
 [node name="PlayerManager" type="Node2D" unique_id=603988405]
 script = ExtResource("1_5j7nk")
-current_store = ExtResource("2_kek0o")
-purchased_goods = Array[ExtResource("3_kum8y")]([SubResource("Resource_q54ao"), SubResource("Resource_ctksh"), SubResource("Resource_htey3")])
-owned_containers = Array[ExtResource("7_ctksh")]([ExtResource("8_htey3"), ExtResource("9_auwi8")])
+player_progress = ExtResource("2_kek0o")

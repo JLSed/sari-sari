@@ -10,6 +10,8 @@
 [sub_resource type="Resource" id="Resource_34qaw"]
 script = ExtResource("3_ij2ls")
 item_name = "Lumpia"
+price = 14
+sell_price = 2
 category = 1
 item_sprite = ExtResource("2_8pv5m")
 item_body = ExtResource("1_s5iv0")
@@ -24,6 +26,7 @@ metadata/_custom_type_script = "uid://d4mpdx1xawvvp"
 [resource]
 script = ExtResource("2_st8e5")
 item_data = SubResource("Resource_34qaw")
+buy_amount = 8
 current_stack = 8
 max_stack = 8
 allowed_container = Array[int]([1])

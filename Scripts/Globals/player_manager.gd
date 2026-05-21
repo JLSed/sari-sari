@@ -1,8 +1,9 @@
 extends Node
 
-@export var current_store : StoreStat
-@export var purchased_goods : Array[PurchasedPackEntry]
-@export var owned_containers : Array[GoodsContainerEntry] = []
+@export var player_progress: PlayerProgress
+
+signal money_changed()
+
 # Tracks store goods bought from the phone (Dictionary: ItemID -> Amount)
 var warehouse_stock: Dictionary = {}
 
@@ -18,7 +19,7 @@ func is_same_pack(pack_a: PackData, pack_b: PackData) -> bool:
 	return false
 
 func get_purchased_pack_entry(pack: PackData) -> PurchasedPackEntry:
-	for entry: PurchasedPackEntry in purchased_goods:
+	for entry: PurchasedPackEntry in player_progress.purchased_goods:
 		if entry != null and is_same_pack(entry.pack_data, pack):
 			return entry
 	return null
@@ -35,7 +36,7 @@ func add_pack_quantity(pack: PackData, amount: int) -> void:
 	var new_entry : PurchasedPackEntry = PurchasedPackEntry.new()
 	new_entry.pack_data = pack
 	new_entry.quantity = amount
-	purchased_goods.append(new_entry)
+	player_progress.purchased_goods.append(new_entry)
 
 func remove_pack_quantity(pack: PackData, amount : int) -> int:
 	if pack == null or amount <= 0:
@@ -52,9 +53,9 @@ func remove_pack_quantity(pack: PackData, amount : int) -> int:
 
 func add_container(new_container: GoodsContainerEntry) -> void:
 	# make sure no duplicates
-	if owned_containers.has(new_container):
+	if player_progress.owned_containers.has(new_container):
 		return
-	owned_containers.append(new_container)
+	player_progress.owned_containers.append(new_container)
 
 func add_stock(item_id: String, amount: int) -> void:
 	if warehouse_stock.has(item_id):

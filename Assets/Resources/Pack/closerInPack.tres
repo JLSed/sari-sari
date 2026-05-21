@@ -10,6 +10,8 @@
 [sub_resource type="Resource" id="Resource_mxk55"]
 script = ExtResource("2_mj4dj")
 item_name = "Closer"
+price = 38
+sell_price = 12
 category = 1
 item_sprite = ExtResource("1_0hv81")
 item_body = ExtResource("1_mxk55")
@@ -23,6 +25,7 @@ metadata/_custom_type_script = "uid://d4mpdx1xawvvp"
 [resource]
 script = ExtResource("1_e8myh")
 item_data = SubResource("Resource_mxk55")
+buy_amount = 4
 current_stack = 3
 max_stack = 4
 allowed_container = Array[int]([1])

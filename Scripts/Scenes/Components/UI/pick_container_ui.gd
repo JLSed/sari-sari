@@ -6,7 +6,7 @@ class_name PickContainerUI extends Control
 signal container_placed(container : GoodsContainerEntry)
 
 func catalog_setup(section_type : Enums.SectionType) -> void:
-	for entry : GoodsContainerEntry in PlayerManager.owned_containers:
+	for entry : GoodsContainerEntry in PlayerManager.player_progress.owned_containers:
 		if  section_type in entry.allowed_placement:
 			var new_container_ui : ContainerUI = ContainerItemUI.instantiate()
 			item_container.add_child(new_container_ui)

@@ -10,6 +10,8 @@
 [sub_resource type="Resource" id="Resource_4ms0k"]
 script = ExtResource("1_xtv7v")
 item_name = "Stick-u"
+price = 37
+sell_price = 2
 item_sprite = ExtResource("1_wla4v")
 item_body = ExtResource("1_4ms0k")
 metadata/_custom_type_script = "uid://to1isbr65bwb"
@@ -22,6 +24,7 @@ metadata/_custom_type_script = "uid://d4mpdx1xawvvp"
 [resource]
 script = ExtResource("1_80e8m")
 item_data = SubResource("Resource_4ms0k")
+buy_amount = 48
 current_stack = 18
 max_stack = 24
 allowed_container = Array[int]([2])

@@ -8,6 +8,8 @@ extends Node2D
 @onready var start_day_button: Button = $UI/StartDayButton
 @onready var time_label: Label = $UI/TimeLabel
 @onready var phone_ui_animation: AnimationPlayer = $PhoneUIAnimation
+@onready var money_label: Label = $UI/MoneyLabel
+
 
 @export_category("Store Section")
 @export var store_sections : Array[StoreSection]
@@ -28,13 +30,18 @@ var END_TIME : int = 23*60 #23:00
 var container_edit_mode : bool = false
 
 func  _ready() -> void:
-	front_store_image.texture = PlayerManager.current_store.store_texture
+	front_store_image.texture = PlayerManager.player_progress.current_store.store_texture
+	money_label.text = str(PlayerManager.player_progress.money)
+	PlayerManager.money_changed.connect(_update_money_label)
 	for store_section in store_sections:
 		store_section.signal_clicked.connect(_on_section_pressed)
 		store_section.set_container_edit_mode(container_edit_mode)
 	
 	StoreManager.phase_changed.connect(_on_phase_changed)
 	StoreManager.enter_preparation_phase()
+
+func _update_money_label() -> void:
+	money_label.text = str(PlayerManager.player_progress.money)
 
 func _process(delta: float) -> void:
 	if !StoreManager.is_day_phase:
@@ -92,3 +99,6 @@ func _on_light_button_toggled(toggled_on: bool) -> void:
 
 func _on_phone_button_pressed() -> void:
 	phone_ui_animation.play("opening_phone")
+
+func _on_background_pressed() -> void:
+	phone_ui_animation.play("closing_phone")

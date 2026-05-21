@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bamu62vqsxyu8"]
+
+[ext_resource type="Texture2D" uid="uid://cnhv61jdclsqq" path="res://Assets/UI/shopy_itemcard_background.png" id="1_yk3km"]
+[ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="2_3tipq"]
+[ext_resource type="Texture2D" uid="uid://dtd7ym8wykjt8" path="res://Assets/Sprites/Snacks/clover.png" id="2_k15rr"]
+[ext_resource type="Script" uid="uid://bre5vkfsxjk25" path="res://Scripts/Scenes/Components/UI/shopy_item_card.gd" id="2_tf8ox"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="3_k15rr"]
+
+[node name="Background" type="TextureRect" unique_id=869245247]
+clip_contents = true
+custom_minimum_size = Vector2(53, 64)
+size_flags_vertical = 0
+texture = ExtResource("1_yk3km")
+script = ExtResource("2_tf8ox")
+
+[node name="ItemImage" type="TextureRect" parent="." unique_id=1833654126]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 37.0
+texture = ExtResource("2_k15rr")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="." unique_id=1485162727]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 46.0
+offset_right = 23.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_3tipq")
+theme_override_font_sizes/font_size = 6
+text = "P2344"
+
+[node name="ItemName" type="Label" parent="." unique_id=949608756]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 51.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_k15rr")
+theme_override_font_sizes/font_size = 8
+text = "Item Name"
+
+[node name="ButtonLabel" type="Label" parent="." unique_id=1980759544]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 54.0
+offset_right = 31.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_3tipq")
+theme_override_font_sizes/font_size = 8
+text = "BUY"
+
+[node name="BuyButton" type="Button" parent="." unique_id=1071596171]
+clip_contents = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 52.0
+offset_right = 39.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("2_3tipq")
+theme_override_font_sizes/font_size = 1
+text = "
+"
+flat = true
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

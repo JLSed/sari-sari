@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://7xg7s3vic2vm" path="res://Scenes/Components/Containers/GoodsContainer1.tscn" id="6_34a8a"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="9_34a8a"]
 [ext_resource type="Texture2D" uid="uid://cohitxj3b8a7g" path="res://Assets/UI/edit_container_icon.png" id="9_r20ap"]
+[ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="10_e185e"]
 [ext_resource type="Texture2D" uid="uid://bs5htwsswmpvd" path="res://Assets/UI/light_toggle_icon.png" id="10_kk8dm"]
 [ext_resource type="Texture2D" uid="uid://daha6o0duwfvq" path="res://Assets/UI/phone_icon.png" id="12_4p06b"]
 [ext_resource type="Texture2D" uid="uid://8jl6cp0w0k10" path="res://Assets/UI/phone_background.png" id="13_n4j5h"]
@@ -67,6 +68,22 @@ tracks/0/keys = {
 "values": [Vector2(0, 135)]
 }
 
+[sub_resource type="Animation" id="Animation_0eyv7"]
+resource_name = "closing_phone"
+length = 0.56666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneUI:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(6.964403, 6.964404),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 135)]
+}
+
 [sub_resource type="Animation" id="Animation_kpna6"]
 resource_name = "opening_phone"
 length = 0.56666666
@@ -86,6 +103,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wdjql"]
 _data = {
 &"RESET": SubResource("Animation_n4j5h"),
+&"closing_phone": SubResource("Animation_0eyv7"),
 &"opening_phone": SubResource("Animation_kpna6")
 }
 
@@ -169,6 +187,21 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 12
 text = "Start the Day"
 
+[node name="MoneyLabel" type="Label" parent="UI" unique_id=2081870270]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -61.0
+offset_right = -33.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("10_e185e")
+text = "123"
+
 [node name="TimeLabel" type="Label" parent="UI" unique_id=1389458945]
 layout_mode = 1
 anchors_preset = 1
@@ -243,11 +276,15 @@ app_scenes = Dictionary[StringName, PackedScene]({
 &"Shopy": ExtResource("15_0eyv7")
 })
 
-[node name="Background" type="TextureRect" parent="PhoneUI" unique_id=2093235845]
+[node name="Background" type="TextureButton" parent="PhoneUI" unique_id=282121980]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("13_n4j5h")
+offset_right = 300.0
+offset_bottom = 135.0
+texture_normal = ExtResource("13_n4j5h")
+texture_pressed = ExtResource("13_n4j5h")
+texture_hover = ExtResource("13_n4j5h")
+texture_disabled = ExtResource("13_n4j5h")
+texture_focused = ExtResource("13_n4j5h")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PhoneUI" unique_id=237568706]
 custom_minimum_size = Vector2(24, 24)
@@ -299,5 +336,6 @@ libraries/ = SubResource("AnimationLibrary_wdjql")
 [connection signal="toggled" from="UI/LightButton" to="." method="_on_light_button_toggled"]
 [connection signal="pressed" from="UI/ContainerButton" to="." method="_on_container_button_pressed"]
 [connection signal="pressed" from="UI/PhoneButton" to="." method="_on_phone_button_pressed"]
+[connection signal="pressed" from="PhoneUI/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ShopyButton" to="PhoneUI" method="_on_shopy_button_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ContainerShopButton" to="PhoneUI" method="_on_container_shop_button_pressed"]

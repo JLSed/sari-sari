@@ -6,7 +6,7 @@ class_name PickGoodsUI extends Control
 signal pack_item_placed(pack : PackData)
 
 func catalog_setup(container_id : int) -> void:
-	for pack_entry : PurchasedPackEntry in PlayerManager.purchased_goods:
+	for pack_entry : PurchasedPackEntry in PlayerManager.player_progress.purchased_goods:
 		if  container_id in pack_entry.pack_data.allowed_container:
 			var new_pack_ui : GoodsUI = PackItemUI.instantiate()
 			item_container.add_child(new_pack_ui)
