@@ -5,10 +5,10 @@ extends Node2D
 @onready var night_modulate: CanvasModulate = $NightModulate
 @onready var night_bulb: PointLight2D = $NightBulb
 @onready var container_button: TextureButton = $UI/ContainerButton
-@onready var start_day_button: Button = $UI/StartDayButton
-@onready var time_label: Label = $UI/TimeLabel
+@onready var start_day_bg: NinePatchRect = $UI/StartDayBG
+@onready var time_label: Label = $UI/TimeLabelBG/TimeLabel
 @onready var phone_ui_animation: AnimationPlayer = $PhoneUIAnimation
-@onready var money_label: Label = $UI/MoneyLabel
+@onready var money_label: Label = $UI/MoneyLabelBG/MoneyLabel
 
 
 @export_category("Store Section")
@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 
 	# ---Day and Night Stuff ---
 func _on_phase_changed(is_day: bool) -> void:
-	start_day_button.visible = !is_day
+	start_day_bg.visible = !is_day
 	container_button.visible = !is_day
 	current_minutes = START_TIME
 	tick_accum = 0.0

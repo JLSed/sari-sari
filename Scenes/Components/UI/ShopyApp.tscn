@@ -17,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_0ibq5")
 ShopyItemCardUI = ExtResource("5_758eq")
 forsale_goods = Array[ExtResource("3_2yboa")]([ExtResource("4_85b3j"), ExtResource("5_yl0yr"), ExtResource("6_h6qse")])
@@ -33,6 +34,7 @@ offset_top = -135.0
 offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("1_wor81")
 
 [node name="Label" type="Label" parent="ShopyBackground" unique_id=2059991627]
