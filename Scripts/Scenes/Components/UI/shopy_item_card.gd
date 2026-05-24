@@ -18,6 +18,5 @@ func setup(item: PackData) -> void:
 func _on_buy_button_pressed() -> void:
 	if PlayerManager.player_progress.money < _current_item.item_data.price:
 		return
-	PlayerManager.player_progress.money -= _current_item.item_data.price
+	PlayerManager.decrease_player_money(_current_item.item_data.price)
 	PlayerManager.add_pack_quantity(_current_item, _current_item.buy_amount)
-	PlayerManager.money_changed.emit()

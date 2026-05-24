@@ -46,6 +46,10 @@ folder_colors={
 "res://Scripts/": "yellow"
 }
 
+[global_group]
+
+dropped_pack=""
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

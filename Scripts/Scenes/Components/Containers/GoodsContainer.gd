@@ -46,6 +46,9 @@ func _on_slot_button_pressed(slot_index : int) -> void:
 			goods_body.global_position = Vector2(get_viewport_rect().size.x / 2.0, 0)
 			goods_body.rotation_degrees = randf_range(0.0, 360.0)
 			goods_body.get_child(0).texture = pack.item_data.item_sprite
+			goods_body.set_meta("pack_data", pack)
+			goods_body.set_meta("item_data", pack.item_data)
+			goods_body.add_to_group("dropped_item")
 
 func showPickPackUI() -> void:
 	var allowed_pack : int = pack_per_slot[current_index].container_id

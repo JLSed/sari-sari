@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bfm811x3we2t6" path="res://Scripts/Scenes/Mains/main_game.gd" id="1_pwsq3"]
 [ext_resource type="PackedScene" uid="uid://ch38dfo383iqr" path="res://Scenes/Globals/player_manager.tscn" id="3_0eyv7"]
+[ext_resource type="Script" uid="uid://17w705p6mn8h" path="res://Scripts/Regulars/Resources/CustomerData.gd" id="3_5hte8"]
 [ext_resource type="Shader" uid="uid://b6lt78eeb1gnc" path="res://Scripts/Shaders/DayNightShader.gdshader" id="3_kk8dm"]
 [ext_resource type="Texture2D" uid="uid://dmxwe1cy7wthf" path="res://Assets/Sprites/Store/street_view2.png" id="3_n4j5h"]
 [ext_resource type="Texture2D" uid="uid://b3x68wg30bh1j" path="res://Assets/Sprites/Store/Inside/store_inside_1.png" id="3_r20ap"]
 [ext_resource type="Script" uid="uid://cm8chxdxtoh6f" path="res://Scripts/Globals/store_manager.gd" id="3_yga5l"]
+[ext_resource type="Resource" uid="uid://lakl4l5jtb5g" path="res://Assets/Resources/Customers/customer1.tres" id="4_1fjp5"]
 [ext_resource type="PackedScene" uid="uid://bi7ohkp8yga7h" path="res://Scenes/Components/StoreSection.tscn" id="4_f7kp8"]
 [ext_resource type="Texture2D" uid="uid://cfbqr1vaa83fe" path="res://Assets/Sprites/Environment/radial_texture.png" id="5_4p06b"]
 [ext_resource type="PackedScene" uid="uid://7xg7s3vic2vm" path="res://Scenes/Components/Containers/GoodsContainer1.tscn" id="6_34a8a"]
+[ext_resource type="PackedScene" uid="uid://dgdaggdywr3vn" path="res://Scenes/Components/customer.tscn" id="6_h27ij"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="9_34a8a"]
 [ext_resource type="Texture2D" uid="uid://cohitxj3b8a7g" path="res://Assets/UI/edit_container_icon.png" id="9_r20ap"]
 [ext_resource type="Texture2D" uid="uid://c4m7ayhm48p7x" path="res://Assets/UI/UI_Flat_Banner01a.png" id="10_ctput"]
@@ -18,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://daha6o0duwfvq" path="res://Assets/UI/phone_icon.png" id="12_4p06b"]
 [ext_resource type="Texture2D" uid="uid://8jl6cp0w0k10" path="res://Assets/UI/phone_background.png" id="13_n4j5h"]
 [ext_resource type="Script" uid="uid://bvwsuglibmj5q" path="res://Scripts/Scenes/Components/UI/phone_controller.gd" id="14_0eyv7"]
+[ext_resource type="Texture2D" uid="uid://f65q4fl2emlu" path="res://Assets/UI/assorted-coin-stack.png" id="14_h27ij"]
 [ext_resource type="Texture2D" uid="uid://bgweftf2ykjr3" path="res://Assets/UI/brown_pressed.png" id="14_tnxsb"]
 [ext_resource type="Texture2D" uid="uid://03ronwkagnn1" path="res://Assets/UI/shopy_icon.png" id="14_wdjql"]
 [ext_resource type="PackedScene" uid="uid://cpaukns4o7xbu" path="res://Scenes/Components/UI/ShopyApp.tscn" id="15_0eyv7"]
@@ -45,6 +49,19 @@ shader_parameter/decay = 0.50000002375
 shader_parameter/weight = 0.05
 shader_parameter/samples = 30
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2jny8"]
+content_margin_left = 3.0
+content_margin_top = 0.0
+content_margin_right = 3.0
+content_margin_bottom = 0.0
+texture = ExtResource("10_lpgiv")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r20ap"]
 atlas = ExtResource("10_kk8dm")
 region = Rect2(21, 0, 21, 20)
@@ -52,9 +69,6 @@ region = Rect2(21, 0, 21, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p06b"]
 atlas = ExtResource("10_kk8dm")
 region = Rect2(0, 0, 21, 20)
-
-[sub_resource type="ConcavePolygonShape2D" id="ConcavePolygonShape2D_yga5l"]
-segments = PackedVector2Array(28.402954, -1.2273331, -36.642242, -0.8371353, -38.79677, -1.5553131, -39.507767, -125.9252, 31.823868, -2.0340958, 36.372314, -123.16643)
 
 [sub_resource type="Animation" id="Animation_n4j5h"]
 length = 0.001
@@ -73,7 +87,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0eyv7"]
 resource_name = "closing_phone"
-length = 0.56666666
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -81,7 +95,7 @@ tracks/0/path = NodePath("PhoneUI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.56666666),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(6.964403, 6.964404),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 135)]
@@ -89,7 +103,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_kpna6"]
 resource_name = "opening_phone"
-length = 0.56666666
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,7 +111,7 @@ tracks/0/path = NodePath("PhoneUI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(6.964404, 6.964403),
 "update": 0,
 "values": [Vector2(0, 135), Vector2(0, 0)]
@@ -110,11 +124,19 @@ _data = {
 &"opening_phone": SubResource("Animation_kpna6")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hte8"]
+size = Vector2(300, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fjp5"]
+size = Vector2(300, 17)
+
 [node name="MainGame" type="Node2D" unique_id=1400300985 node_paths=PackedStringArray("store_sections") groups=["main_game_scene"]]
 script = ExtResource("1_pwsq3")
 store_sections = [NodePath("StoreSectionTL"), NodePath("StoreSectionBL"), NodePath("StoreSectionTR"), NodePath("StoreSectionBR")]
 time_incrementor = 2.0
 INCREMENT_VALUE = 15
+customer_scene = ExtResource("6_h27ij")
+customer_data_pool = Array[ExtResource("3_5hte8")]([ExtResource("4_1fjp5")])
 
 [node name="NightBulb" type="PointLight2D" parent="." unique_id=1635104361]
 visible = false
@@ -135,6 +157,9 @@ light_mask = 0
 position = Vector2(150, 19.000002)
 scale = Vector2(0.9333333, 0.9333333)
 texture = ExtResource("3_n4j5h")
+
+[node name="CustomerContainer" type="Node2D" parent="." unique_id=892710808]
+position = Vector2(-18.310562, 85)
 
 [node name="FrontStoreImage" type="Sprite2D" parent="." unique_id=253915598]
 light_mask = 3
@@ -201,8 +226,8 @@ offset_right = 39.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0.7411765, 0.6117647, 1)
-theme_override_colors/font_hover_color = Color(0, 0.7411765, 0.6117647, 1)
+theme_override_colors/font_color = Color(0.8177258, 0.57849026, 0.39531383, 1)
+theme_override_colors/font_hover_color = Color(0.8156863, 0.5764706, 0.39607844, 1)
 theme_override_constants/line_spacing = -3
 theme_override_fonts/font = ExtResource("10_e185e")
 theme_override_font_sizes/font_size = 10
@@ -210,40 +235,39 @@ text = "START
 THE DAY"
 flat = true
 
-[node name="MoneyLabelBG" type="NinePatchRect" parent="UI" unique_id=723659046]
+[node name="MoneyLabelBG" type="PanelContainer" parent="UI" unique_id=294289621]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -91.0
+offset_left = -62.572845
 offset_top = 1.0
-offset_right = -43.0
+offset_right = -42.572845
 offset_bottom = 16.0
-texture = ExtResource("10_lpgiv")
-patch_margin_left = 3
-patch_margin_top = 4
-patch_margin_right = 3
-patch_margin_bottom = 4
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 1
-
-[node name="MoneyLabel" type="Label" parent="UI/MoneyLabelBG" unique_id=2081870270]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -18.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 13.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2jny8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MoneyLabelBG" unique_id=135486687]
+custom_minimum_size = Vector2(0, 0.065)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="UI/MoneyLabelBG/HBoxContainer" unique_id=533985778]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+texture = ExtResource("14_h27ij")
+expand_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="UI/MoneyLabelBG/HBoxContainer" unique_id=2081870270]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("10_e185e")
-theme_override_font_sizes/font_size = 8
-text = "123"
-horizontal_alignment = 2
+theme_override_font_sizes/font_size = 6
+text = "₱1,234"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LightButton" type="CheckButton" parent="UI" unique_id=457566018]
 layout_mode = 1
@@ -325,12 +349,99 @@ theme_override_fonts/font = ExtResource("9_34a8a")
 text = "10:23"
 horizontal_alignment = 2
 
+[node name="CustomerUI" type="Control" parent="." unique_id=441525475]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 300.0
+offset_bottom = 135.02576
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HappyBar" type="ProgressBar" parent="CustomerUI" unique_id=2044916109]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -10.512878
+offset_right = -24.460846
+offset_bottom = 28.815445
+grow_horizontal = 2
+grow_vertical = 2
+step = 10.0
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="RejectButton" type="Button" parent="CustomerUI" unique_id=1598936626]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -38.025757
+offset_right = 32.0
+offset_bottom = -23.025757
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_34a8a")
+theme_override_font_sizes/font_size = 8
+text = "We don't have that.."
+
+[node name="RequestContainer" type="PanelContainer" parent="CustomerUI" unique_id=1364850638]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 53.0
+grow_horizontal = 2
+
+[node name="RequestLabel" type="RichTextLabel" parent="CustomerUI/RequestContainer" unique_id=1327874517]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("9_34a8a")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+text = "1. test
+2. test
+3. test"
+
+[node name="SpeechLabel" type="Label" parent="CustomerUI" unique_id=100040642]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.06517
+offset_top = 10.216957
+offset_right = 29.93483
+offset_bottom = 17.216957
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("9_34a8a")
+theme_override_font_sizes/font_size = 8
+text = "customer line"
+
 [node name="PhoneUI" type="Control" parent="." unique_id=70818162]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 135.0
 offset_right = 300.0
-offset_bottom = 270.0002
+offset_bottom = 270.00043
 script = ExtResource("14_0eyv7")
 app_scenes = Dictionary[StringName, PackedScene]({
 &"ContainerShop": ExtResource("16_e185e"),
@@ -384,19 +495,29 @@ offset_bottom = 135.00021
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="Temporary" type="StaticBody2D" parent="." unique_id=863466439]
-position = Vector2(151.33925, 124.327644)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Temporary" unique_id=1516276238]
-shape = SubResource("ConcavePolygonShape2D_yga5l")
-
 [node name="PhoneUIAnimation" type="AnimationPlayer" parent="." unique_id=398768389]
 libraries/ = SubResource("AnimationLibrary_wdjql")
+
+[node name="ItemDroppedDetector" type="Area2D" parent="." unique_id=164358433]
+position = Vector2(0, 117)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ItemDroppedDetector" unique_id=856728187]
+position = Vector2(150, 9)
+shape = SubResource("RectangleShape2D_5hte8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1057549282]
+position = Vector2(0, 135.02576)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=780480328]
+position = Vector2(150, 11.474243)
+shape = SubResource("RectangleShape2D_1fjp5")
 
 [connection signal="pressed" from="UI/StartDayBG/StartDayButton" to="." method="_on_start_day_button_pressed"]
 [connection signal="toggled" from="UI/LightButton" to="." method="_on_light_button_toggled"]
 [connection signal="pressed" from="UI/ContainerButton" to="." method="_on_container_button_pressed"]
 [connection signal="pressed" from="UI/PhoneButton" to="." method="_on_phone_button_pressed"]
+[connection signal="pressed" from="CustomerUI/RejectButton" to="." method="_on_reject_button_pressed"]
 [connection signal="pressed" from="PhoneUI/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ShopyButton" to="PhoneUI" method="_on_shopy_button_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ContainerShopButton" to="PhoneUI" method="_on_container_shop_button_pressed"]
+[connection signal="body_entered" from="ItemDroppedDetector" to="." method="_on_item_dropped_detector_body_entered"]

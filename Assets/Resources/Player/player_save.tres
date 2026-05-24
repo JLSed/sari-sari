@@ -6,10 +6,18 @@
 [ext_resource type="Resource" uid="uid://dfwgnhxe3035b" path="res://Assets/Resources/Container/container2.tres" id="3_trl4y"]
 [ext_resource type="Script" uid="uid://jdq1cx1mg4x6" path="res://Scripts/Regulars/Resources/purchased_pack_entry.gd" id="4_7mft6"]
 [ext_resource type="Resource" uid="uid://b6iwo3e6nhvh1" path="res://Assets/Resources/Container/container1.tres" id="4_dxecr"]
+[ext_resource type="Resource" uid="uid://6cqvaewfwkwp" path="res://Assets/Resources/Pack/stikuInPack.tres" id="6_trl4y"]
+
+[sub_resource type="Resource" id="Resource_7mft6"]
+script = ExtResource("4_7mft6")
+pack_data = ExtResource("6_trl4y")
+quantity = 99
+metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
 
 [resource]
 script = ExtResource("1_di7ls")
 current_store = ExtResource("1_sowfl")
+purchased_goods = Array[ExtResource("4_7mft6")]([SubResource("Resource_7mft6")])
 owned_containers = Array[ExtResource("2_dxecr")]([ExtResource("3_trl4y"), ExtResource("4_dxecr")])
-money = 234
+money = 123
 metadata/_custom_type_script = "uid://bqax3cfhc14fj"

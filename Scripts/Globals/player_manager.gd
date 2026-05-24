@@ -62,3 +62,17 @@ func add_stock(item_id: String, amount: int) -> void:
 		warehouse_stock[item_id] += amount
 	else:
 		warehouse_stock[item_id] = amount
+
+func increase_player_money(amount:int) -> void:
+	player_progress.money += amount
+	money_changed.emit()
+
+func decrease_player_money(amount:int) -> void:
+	player_progress.money -= amount
+	money_changed.emit()
+
+func update_money_ui() -> String:
+	# 99999 -> 99,999
+	var regex := RegEx.new()
+	regex.compile("(\\d)(?=(\\d{3})+(?!\\d))")
+	return regex.sub(str(player_progress.money), "$1,", true)
