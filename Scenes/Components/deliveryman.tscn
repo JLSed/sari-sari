@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dkhw6w4b2rnov"]
+
+[ext_resource type="Script" uid="uid://xdxxx18ev5hi" path="res://Scripts/Scenes/Components/deliveryman.gd" id="1_lon6m"]
+[ext_resource type="Texture2D" uid="uid://cbd2sng8srq8q" path="res://Assets/Sprites/NPC/deliveryman.png" id="1_qndpu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lon6m"]
+atlas = ExtResource("1_qndpu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k17uo"]
+atlas = ExtResource("1_qndpu")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7euen"]
+atlas = ExtResource("1_qndpu")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_511tt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lon6m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k17uo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7euen")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7g4e8"]
+size = Vector2(35.22222, 12.222222)
+
+[node name="Deliveryman" type="Node2D" unique_id=528193017]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_lon6m")
+
+[node name="AnimatedCustomerSprite" type="AnimatedSprite2D" parent="." unique_id=964457300]
+sprite_frames = SubResource("SpriteFrames_511tt")
+animation = &"idle"
+frame_progress = 0.61812824
+
+[node name="Detector" type="Area2D" parent="." unique_id=635830985]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detector" unique_id=1764895322]
+position = Vector2(0, 10)
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_7g4e8")

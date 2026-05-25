@@ -63,8 +63,19 @@ func add_stock(item_id: String, amount: int) -> void:
 	else:
 		warehouse_stock[item_id] = amount
 
+func add_pending_delivery(pack: PackData, amount: int) -> void:
+	for entry : PendingDeliveryEntry in player_progress.pending_deliveries:
+		if is_same_pack(entry.pack_data, pack):
+			entry.quantity += amount
+			return
+	var new_entry : PendingDeliveryEntry = PendingDeliveryEntry.new()
+	new_entry.pack_data = pack
+	new_entry.quantity = amount
+	player_progress.pending_deliveries.append(new_entry)
+
 func increase_player_money(amount:int) -> void:
 	player_progress.money += amount
+	player_progress.today_profit += amount
 	money_changed.emit()
 
 func decrease_player_money(amount:int) -> void:
@@ -76,3 +87,20 @@ func update_money_ui() -> String:
 	var regex := RegEx.new()
 	regex.compile("(\\d)(?=(\\d{3})+(?!\\d))")
 	return regex.sub(str(player_progress.money), "$1,", true)
+
+func has_pending_deliveres() -> bool:
+	return !player_progress.pending_deliveries.is_empty()
+
+func deliver_pending_packs() -> void:
+	for entry: PendingDeliveryEntry in player_progress.pending_deliveries:
+		add_pack_quantity(entry.pack_data, entry.quantity)
+	player_progress.pending_deliveries.clear()
+
+func record_customer_served() -> void:
+	player_progress.today_customer_served += 1
+	player_progress.total_customer_served += 1
+
+func to_next_day() -> void:
+	player_progress.current_day += 1
+	player_progress.today_customer_served = 0
+	player_progress.today_profit = 0

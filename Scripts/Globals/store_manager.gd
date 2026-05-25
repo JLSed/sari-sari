@@ -5,6 +5,7 @@ signal entered_preparation_phase
 signal entered_day_phase
 
 var is_day_phase: bool = false
+var is_day_ended: bool = false
 
 func enter_preparation_phase() -> void:
 	is_day_phase = false
@@ -15,6 +16,10 @@ func enter_day_phase() -> void:
 	is_day_phase = true
 	phase_changed.emit(is_day_phase)
 	entered_day_phase.emit()
+
+func enter_end_day_phase() -> void:
+	is_day_ended = true
+	SignalBus.day_ended.emit()
 
 func get_store_attraction_rate() -> float:
 	if !PlayerManager.player_progress:

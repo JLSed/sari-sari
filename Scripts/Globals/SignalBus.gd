@@ -10,3 +10,7 @@ signal day_tick()
 signal customer_left()
 signal customer_spawned()
 signal customer_arrived()
+
+signal day_ended()
+signal next_day_started()
+signal delivery_arrived()

@@ -10,12 +10,15 @@
 [ext_resource type="Resource" uid="uid://lakl4l5jtb5g" path="res://Assets/Resources/Customers/customer1.tres" id="4_1fjp5"]
 [ext_resource type="PackedScene" uid="uid://bi7ohkp8yga7h" path="res://Scenes/Components/StoreSection.tscn" id="4_f7kp8"]
 [ext_resource type="Texture2D" uid="uid://cfbqr1vaa83fe" path="res://Assets/Sprites/Environment/radial_texture.png" id="5_4p06b"]
+[ext_resource type="PackedScene" uid="uid://dkhw6w4b2rnov" path="res://Scenes/Components/deliveryman.tscn" id="5_occbj"]
 [ext_resource type="PackedScene" uid="uid://7xg7s3vic2vm" path="res://Scenes/Components/Containers/GoodsContainer1.tscn" id="6_34a8a"]
 [ext_resource type="PackedScene" uid="uid://dgdaggdywr3vn" path="res://Scenes/Components/customer.tscn" id="6_h27ij"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="9_34a8a"]
+[ext_resource type="Script" uid="uid://d3hv81yc2ihcx" path="res://Scripts/Regulars/Manager/customer_manager.gd" id="9_hpam1"]
 [ext_resource type="Texture2D" uid="uid://cohitxj3b8a7g" path="res://Assets/UI/edit_container_icon.png" id="9_r20ap"]
 [ext_resource type="Texture2D" uid="uid://c4m7ayhm48p7x" path="res://Assets/UI/UI_Flat_Banner01a.png" id="10_ctput"]
 [ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="10_e185e"]
+[ext_resource type="Script" uid="uid://bvl64n1isbmnx" path="res://Scripts/Regulars/Manager/delivery_man_manager.gd" id="10_eablw"]
 [ext_resource type="Texture2D" uid="uid://bs5htwsswmpvd" path="res://Assets/UI/light_toggle_icon.png" id="10_kk8dm"]
 [ext_resource type="Texture2D" uid="uid://dw1dksjtue0r3" path="res://Assets/UI/UI_Flat_Frame02a.png" id="10_lpgiv"]
 [ext_resource type="Texture2D" uid="uid://daha6o0duwfvq" path="res://Assets/UI/phone_icon.png" id="12_4p06b"]
@@ -27,6 +30,8 @@
 [ext_resource type="PackedScene" uid="uid://cpaukns4o7xbu" path="res://Scenes/Components/UI/ShopyApp.tscn" id="15_0eyv7"]
 [ext_resource type="Texture2D" uid="uid://bw166vyhxanoj" path="res://Assets/UI/containershop_icon.png" id="15_nbd5i"]
 [ext_resource type="PackedScene" uid="uid://dvd0c8ikcxf7g" path="res://Scenes/Components/UI/ContainerShopApp.tscn" id="16_e185e"]
+[ext_resource type="Texture2D" uid="uid://cy3c8pnddf1yb" path="res://Assets/UI/UI_Flat_Banner04a.png" id="28_oests"]
+[ext_resource type="Texture2D" uid="uid://cn0uya57c5bqp" path="res://Assets/UI/UI_Flat_Banner02a.png" id="29_occbj"]
 
 [sub_resource type="GDScript" id="GDScript_s812k"]
 script/source = "class_name GoodsContainerData extends Resource
@@ -54,7 +59,7 @@ content_margin_left = 3.0
 content_margin_top = 0.0
 content_margin_right = 3.0
 content_margin_bottom = 0.0
-texture = ExtResource("10_lpgiv")
+texture = ExtResource("14_tnxsb")
 texture_margin_left = 3.0
 texture_margin_top = 4.0
 texture_margin_right = 3.0
@@ -69,6 +74,29 @@ region = Rect2(21, 0, 21, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p06b"]
 atlas = ExtResource("10_kk8dm")
 region = Rect2(0, 0, 21, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j04qb"]
+texture = ExtResource("28_oests")
+texture_margin_left = 4.0
+texture_margin_top = 3.0
+texture_margin_right = 1.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oests"]
+texture = ExtResource("10_lpgiv")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 96, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hpam1"]
+texture = ExtResource("29_occbj")
+texture_margin_left = 9.0
+texture_margin_top = 5.0
+texture_margin_right = 8.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(0, 0, 64, 20)
 
 [sub_resource type="Animation" id="Animation_n4j5h"]
 length = 0.001
@@ -133,10 +161,8 @@ size = Vector2(300, 17)
 [node name="MainGame" type="Node2D" unique_id=1400300985 node_paths=PackedStringArray("store_sections") groups=["main_game_scene"]]
 script = ExtResource("1_pwsq3")
 store_sections = [NodePath("StoreSectionTL"), NodePath("StoreSectionBL"), NodePath("StoreSectionTR"), NodePath("StoreSectionBR")]
-time_incrementor = 2.0
+time_incrementor = 1.5
 INCREMENT_VALUE = 15
-customer_scene = ExtResource("6_h27ij")
-customer_data_pool = Array[ExtResource("3_5hte8")]([ExtResource("4_1fjp5")])
 
 [node name="NightBulb" type="PointLight2D" parent="." unique_id=1635104361]
 visible = false
@@ -151,6 +177,15 @@ texture_scale = 0.8
 
 [node name="StoreManager" type="Node2D" parent="." unique_id=2040221366]
 script = ExtResource("3_yga5l")
+
+[node name="CustomerManager" type="Node2D" parent="." unique_id=1612262793]
+script = ExtResource("9_hpam1")
+customer_scene = ExtResource("6_h27ij")
+customer_data_pool = Array[ExtResource("3_5hte8")]([ExtResource("4_1fjp5")])
+
+[node name="DeliveryManManager" type="Node2D" parent="." unique_id=922665250]
+script = ExtResource("10_eablw")
+deliveryman_scene = ExtResource("5_occbj")
 
 [node name="StreetView" type="Sprite2D" parent="." unique_id=1732702509]
 light_mask = 0
@@ -338,14 +373,16 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -43.0
-offset_right = -3.0
-offset_bottom = 23.0
+offset_left = -29.96872
+offset_top = 2.0
+offset_right = -6.9687195
+offset_bottom = 12.0
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.72156864, 0.6509804, 0.13725491, 1)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("9_34a8a")
+theme_override_font_sizes/font_size = 12
 text = "10:23"
 horizontal_alignment = 2
 
@@ -495,6 +532,97 @@ offset_bottom = 135.00021
 grow_horizontal = 2
 mouse_filter = 2
 
+[node name="DaySummaryUI" type="Control" parent="." unique_id=834648542]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 101.0
+offset_right = 200.0
+offset_bottom = 135.02576
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(49, 71)
+
+[node name="ContentContainer" type="PanelContainer" parent="DaySummaryUI" unique_id=1874563751]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.5
+offset_top = -47.5
+offset_right = 48.5
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_j04qb")
+
+[node name="MarginContainer" type="MarginContainer" parent="DaySummaryUI/ContentContainer" unique_id=1592624579]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DaySummaryUI/ContentContainer/MarginContainer" unique_id=1882998063]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="DayLabel" type="Label" parent="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer" unique_id=1286989533]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_34a8a")
+theme_override_font_sizes/font_size = 8
+text = "Day - 1"
+
+[node name="ProfitLabel" type="Label" parent="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer" unique_id=1788745591]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_34a8a")
+theme_override_font_sizes/font_size = 8
+text = "Profit : 2342"
+
+[node name="CustomerServedLabel" type="Label" parent="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer" unique_id=1536538789]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_34a8a")
+theme_override_font_sizes/font_size = 8
+text = "Customer Served : 2342"
+
+[node name="MarginContainer" type="MarginContainer" parent="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer" unique_id=1440786562]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NextDayButton" type="Button" parent="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=1976259308]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("10_e185e")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/normal = SubResource("StyleBoxTexture_oests")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oests")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oests")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_oests")
+theme_override_styles/focus = SubResource("StyleBoxTexture_oests")
+text = "Next Day"
+
+[node name="HeaderContainer" type="PanelContainer" parent="DaySummaryUI" unique_id=2052776791]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 14.0
+offset_right = 40.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_hpam1")
+
+[node name="Label" type="Label" parent="DaySummaryUI/HeaderContainer" unique_id=1730482898]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.3554064, 0.6114958, 0.2976804, 1)
+theme_override_fonts/font = ExtResource("10_e185e")
+theme_override_font_sizes/font_size = 8
+text = "Day Summary"
+
 [node name="PhoneUIAnimation" type="AnimationPlayer" parent="." unique_id=398768389]
 libraries/ = SubResource("AnimationLibrary_wdjql")
 
@@ -520,4 +648,5 @@ shape = SubResource("RectangleShape2D_1fjp5")
 [connection signal="pressed" from="PhoneUI/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ShopyButton" to="PhoneUI" method="_on_shopy_button_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ContainerShopButton" to="PhoneUI" method="_on_container_shop_button_pressed"]
+[connection signal="pressed" from="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer/MarginContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
 [connection signal="body_entered" from="ItemDroppedDetector" to="." method="_on_item_dropped_detector_body_entered"]
