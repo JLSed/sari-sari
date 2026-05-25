@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dvd0c8ikcxf7g"]
 
 [ext_resource type="Script" uid="uid://b2u7u7byl3y6w" path="res://Scripts/Scenes/Components/UI/container_shop_app.gd" id="1_smoi6"]
+[ext_resource type="PackedScene" uid="uid://c27rhs647y8ao" path="res://Scenes/Components/UI/ContainerShopItemCard.tscn" id="2_eeyqp"]
 [ext_resource type="Texture2D" uid="uid://ccc8pxkk2r1o5" path="res://Assets/UI/containershop_background.png" id="2_smoi6"]
 [ext_resource type="FontFile" uid="uid://cghkwi3mwcvpa" path="res://Assets/Fonts/monogram-extended-italic.ttf" id="3_v5wwt"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="4_eeyqp"]
@@ -12,7 +13,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_smoi6")
+ContainerShopItemCardUI = ExtResource("2_eeyqp")
 
 [node name="ShopyBackground" type="TextureRect" parent="." unique_id=1190830837]
 layout_mode = 1
@@ -26,6 +29,7 @@ offset_top = -135.0
 offset_right = 150.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("2_smoi6")
 
 [node name="Label" type="Label" parent="ShopyBackground" unique_id=891848982]
@@ -64,5 +68,31 @@ theme_override_fonts/font = ExtResource("4_eeyqp")
 theme_override_font_sizes/font_size = 8
 text = "Go Back"
 flat = true
+
+[node name="HScrollBar" type="ScrollContainer" parent="." unique_id=1595178667]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -105.0
+offset_right = 57.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HScrollBar" unique_id=1809821712]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ContainersContainer" type="GridContainer" parent="HScrollBar/MarginContainer" unique_id=165428012]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 2
 
 [connection signal="pressed" from="ShopyBackground/BackButton" to="." method="_on_back_button_pressed"]

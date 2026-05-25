@@ -37,6 +37,7 @@ pack_sprites = [NodePath("Pack1"), NodePath("Pack2"), NodePath("Pack3"), NodePat
 slot_buttons = [NodePath("GoodsContainerSlotButton1"), NodePath("GoodsContainerSlotButton2"), NodePath("GoodsContainerSlotButton3"), NodePath("GoodsContainerSlotButton4")]
 
 [node name="ContainerSprite" type="Sprite2D" parent="." unique_id=1445098297]
+texture = ExtResource("2_wjf6a")
 
 [node name="Pack1" type="AnimatedSprite2D" parent="." unique_id=1139637673]
 position = Vector2(-46, 3)

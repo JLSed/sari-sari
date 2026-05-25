@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_xsor8")
-container_name = "Basta2"
+container_name = "Garapon"
+price = 15
 allowed_placement = Array[int]([1])
 container_scene = ExtResource("1_kyu0e")
 metadata/_custom_type_script = "uid://dl0c0ncwhpd31"

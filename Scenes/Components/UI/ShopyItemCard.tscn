@@ -38,9 +38,9 @@ stretch_mode = 5
 [node name="PriceLabel" type="Label" parent="." unique_id=1485162727]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 46.0
+offset_top = 45.0
 offset_right = 23.0
-offset_bottom = 53.0
+offset_bottom = 52.0
 theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("2_3tipq")
 theme_override_font_sizes/font_size = 6
@@ -49,9 +49,9 @@ text = "P2344"
 [node name="ItemName" type="Label" parent="." unique_id=949608756]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 38.0
+offset_top = 37.0
 offset_right = 51.0
-offset_bottom = 45.0
+offset_bottom = 44.0
 theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
 theme_override_fonts/font = ExtResource("3_k15rr")
 theme_override_font_sizes/font_size = 8

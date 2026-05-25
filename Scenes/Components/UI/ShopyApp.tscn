@@ -3,12 +3,8 @@
 [ext_resource type="Script" uid="uid://c74j6u8u48r0m" path="res://Scripts/Scenes/Components/UI/shopy_app.gd" id="1_0ibq5"]
 [ext_resource type="Texture2D" uid="uid://2fltm23xj2d4" path="res://Assets/UI/shopy_background.png" id="1_wor81"]
 [ext_resource type="FontFile" uid="uid://cghkwi3mwcvpa" path="res://Assets/Fonts/monogram-extended-italic.ttf" id="2_ywswq"]
-[ext_resource type="Script" uid="uid://bp4lvgeddtvx5" path="res://Scripts/Regulars/Resources/PackData.gd" id="3_2yboa"]
-[ext_resource type="Resource" uid="uid://bh3egumhe3mrs" path="res://Assets/Resources/Pack/lumpiaInPack.tres" id="4_85b3j"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="4_secge"]
 [ext_resource type="PackedScene" uid="uid://bamu62vqsxyu8" path="res://Scenes/Components/UI/ShopyItemCard.tscn" id="5_758eq"]
-[ext_resource type="Resource" uid="uid://6cqvaewfwkwp" path="res://Assets/Resources/Pack/stikuInPack.tres" id="5_yl0yr"]
-[ext_resource type="Resource" uid="uid://dv5dx33k5xij" path="res://Assets/Resources/Pack/closerInPack.tres" id="6_h6qse"]
 
 [node name="Shopy" type="Control" unique_id=725333936]
 layout_mode = 3
@@ -20,7 +16,6 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_0ibq5")
 ShopyItemCardUI = ExtResource("5_758eq")
-forsale_goods = Array[ExtResource("3_2yboa")]([ExtResource("4_85b3j"), ExtResource("5_yl0yr"), ExtResource("6_h6qse")])
 
 [node name="ShopyBackground" type="TextureRect" parent="." unique_id=208968857]
 layout_mode = 1

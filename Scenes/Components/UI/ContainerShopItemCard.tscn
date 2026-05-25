@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://c27rhs647y8ao"]
+
+[ext_resource type="Texture2D" uid="uid://co07fl6m6sdil" path="res://Assets/UI/containershop_itemcard_background.png" id="1_pgw6d"]
+[ext_resource type="Script" uid="uid://b3abv5rm4krmy" path="res://Scripts/Scenes/Components/UI/container_shop_item_card.gd" id="2_hkktk"]
+[ext_resource type="Texture2D" uid="uid://f52naisyacfu" path="res://Assets/Sprites/Store/Container/container2.png" id="3_pgw6d"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="3_xqdtn"]
+[ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="5_g46rt"]
+
+[node name="Background" type="TextureRect" unique_id=869245247]
+clip_contents = true
+custom_minimum_size = Vector2(53, 64)
+size_flags_vertical = 0
+texture = ExtResource("1_pgw6d")
+script = ExtResource("2_hkktk")
+
+[node name="ContainerImage" type="TextureRect" parent="." unique_id=1833654126]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 37.0
+texture = ExtResource("3_pgw6d")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="." unique_id=1485162727]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 46.0
+offset_right = 23.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0.89411765, 0.87058824, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("5_g46rt")
+theme_override_font_sizes/font_size = 6
+text = "P2344"
+
+[node name="ContainerName" type="Label" parent="." unique_id=949608756]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 38.0
+offset_right = 51.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0.89411765, 0.87058824, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("3_xqdtn")
+theme_override_font_sizes/font_size = 8
+text = "Item Name"
+
+[node name="ButtonLabel" type="Label" parent="." unique_id=1980759544]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 54.0
+offset_right = 48.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(0.89411765, 0.87058824, 0.87058824, 1)
+theme_override_fonts/font = ExtResource("5_g46rt")
+theme_override_font_sizes/font_size = 8
+text = "BUY"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="." unique_id=1071596171]
+clip_contents = true
+layout_mode = 0
+offset_left = 5.0
+offset_top = 52.0
+offset_right = 48.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("5_g46rt")
+theme_override_font_sizes/font_size = 1
+text = "
+"
+flat = true
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

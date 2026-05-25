@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_yewh6")
-container_name = "Starting"
+container_name = "Snack Strip"
 allowed_placement = Array[int]([0, 1])
 container_scene = ExtResource("1_7bv4t")
 metadata/_custom_type_script = "uid://dl0c0ncwhpd31"
