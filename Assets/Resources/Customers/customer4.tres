@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://bfdhletnlmkmk"]
+
+[ext_resource type="Script" uid="uid://bp4lvgeddtvx5" path="res://Scripts/Regulars/Resources/PackData.gd" id="1_s3lwe"]
+[ext_resource type="Texture2D" uid="uid://dv1uty0b8mmmh" path="res://Assets/Sprites/NPC/student2.png" id="2_l5e8d"]
+[ext_resource type="Script" uid="uid://17w705p6mn8h" path="res://Scripts/Regulars/Resources/CustomerData.gd" id="3_n3qad"]
+
+[resource]
+script = ExtResource("3_n3qad")
+customer_sprite = ExtResource("2_l5e8d")
+can_buy_all_packs = true
+metadata/_custom_type_script = "uid://17w705p6mn8h"

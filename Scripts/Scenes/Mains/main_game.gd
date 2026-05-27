@@ -5,10 +5,13 @@ extends Node2D
 @onready var night_modulate: CanvasModulate = $NightModulate
 @onready var night_bulb: PointLight2D = $NightBulb
 @onready var container_button: TextureButton = $UI/ContainerButton
+@onready var edit_packs_button: TextureButton = $UI/EditPacksButton
 @onready var start_day_bg: NinePatchRect = $UI/StartDayBG
 @onready var time_label: Label = $UI/TimeLabelBG/TimeLabel
 @onready var phone_ui_animation: AnimationPlayer = $PhoneUIAnimation
 @onready var money_label: Label = $UI/MoneyLabelBG/HBoxContainer/MoneyLabel
+@onready var edit_label_container: PanelContainer = $UI/EditLabelContainer
+
 
 @onready var customer_manager: Node2D = $CustomerManager
 @onready var delivery_manager: Node2D = $DeliveryManManager
@@ -36,8 +39,10 @@ var END_TIME : int = 23*60 #23:00
 @export var time_of_day : float = 0.3
 @export var day_speed : float = 0.05
 var container_edit_mode : bool = false
+var pack_edit_mode : bool = false
 
 func  _ready() -> void:
+	AudioManager.play_bgm("main_game")
 	front_store_image.texture = PlayerManager.player_progress.current_store.store_texture
 	_update_money_label()
 	PlayerManager.money_changed.connect(_update_money_label)
@@ -78,7 +83,7 @@ func _process(delta: float) -> void:
 		if customer_manager.has_active_customer and customer_manager.current_customer.has_arrived:
 			customer_manager.decay_customer_happiness()
 	
-	if current_minutes >= END_TIME and !customer_manager.has_active_customer:
+	if current_minutes >= END_TIME and !customer_manager.has_active_customer and !StoreManager.is_day_ended:
 		StoreManager.enter_end_day_phase()
 	
 	# ---Day and Night Stuff ---
@@ -92,6 +97,10 @@ func _on_phase_changed(is_day: bool) -> void:
 		container_edit_mode = false
 		for section in store_sections:
 			section.set_container_edit_mode(false)
+		_set_edit_pack_mode(false)
+	else:
+		_set_edit_pack_mode(true)
+		edit_label_container.visible = false
 
 func _update_cloat_and_lighting() -> void:
 	var hours := current_minutes / 60
@@ -111,14 +120,20 @@ func _update_cloat_and_lighting() -> void:
 	#light bulb at night
 	night_bulb.energy = max_light_energy * (1.0 - intensity_multiplier)
 
+func _set_edit_pack_mode(enabled: bool) -> void:
+	pack_edit_mode = enabled
+	StoreManager.set_pack_edit_mode(enabled)
+	edit_label_container.visible = enabled and StoreManager.is_day_phase
+
 func _on_day_ended() -> void:
 	var progress : PlayerProgress = PlayerManager.player_progress
+	AudioManager.play_sfx("day_complete")
 	day_label.text = "Day - " + str(progress.current_day) + " Complete!"
 	customer_served_label.text = "Customer Served : " + str(progress.today_customer_served)
 	profit_label.text = "Today's Profit : " + str(progress.today_profit)
 	day_summary_ui.visible = true
 	var tween : Tween = create_tween()
-	tween.tween_property(day_summary_ui, "scale", Vector2.ONE, 0.3).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(day_summary_ui, "scale", Vector2.ONE, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_EXPO)
 
 func _on_next_day_button_pressed() -> void:
 	var tween : Tween = create_tween()
@@ -159,3 +174,6 @@ func _on_item_dropped_detector_body_entered(body: Node2D) -> void:
 		tween.tween_property(body, "modulate", Color(0.0, 0.0, 0.0, 0.0), 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
 		tween.tween_callback(body.queue_free)
 		print("dropped " + dropped_pack.item_data.item_name + " added to inventory")
+
+func _on_edit_packs_button_pressed() -> void:
+	_set_edit_pack_mode(!pack_edit_mode)

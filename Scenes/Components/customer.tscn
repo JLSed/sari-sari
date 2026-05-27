@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://dgdaggdywr3vn"]
 
 [ext_resource type="Script" uid="uid://5vd7vgg4g2cw" path="res://Scripts/Scenes/Components/customer.gd" id="1_3d6e4"]
-[ext_resource type="Texture2D" uid="uid://cpgand3m3rr31" path="res://Assets/Sprites/NPC/customer1.png" id="1_v5cmt"]
 [ext_resource type="Texture2D" uid="uid://cpgand3m3rr31" path="res://Assets/Sprites/NPC/customer1.png" id="3_urecl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3d6e4"]
-atlas = ExtResource("1_v5cmt")
+atlas = ExtResource("3_urecl")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lbv1f"]
@@ -47,8 +46,7 @@ script = ExtResource("1_3d6e4")
 
 [node name="AnimatedCustomerSprite" type="AnimatedSprite2D" parent="." unique_id=2075146366]
 sprite_frames = SubResource("SpriteFrames_8oiut")
-animation = &"walking"
-frame_progress = 0.13078758
+animation = &"idle"
 
 [node name="Detector" type="Area2D" parent="." unique_id=1353950397]
 

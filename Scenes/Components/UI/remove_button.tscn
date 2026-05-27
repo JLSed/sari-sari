@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://by8dnq1t4xo7b"]
+
+[ext_resource type="Texture2D" uid="uid://c7sx7hcudm0m1" path="res://Assets/UI/x_icon.png" id="1_dog4f"]
+
+[node name="RemoveButton" type="TextureButton" unique_id=1842461406]
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(8, 8)
+texture_normal = ExtResource("1_dog4f")
+texture_pressed = ExtResource("1_dog4f")
+texture_hover = ExtResource("1_dog4f")
+texture_disabled = ExtResource("1_dog4f")
+texture_focused = ExtResource("1_dog4f")

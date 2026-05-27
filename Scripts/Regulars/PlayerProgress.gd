@@ -11,3 +11,7 @@ class_name PlayerProgress extends Resource
 @export var total_customer_served : int = 0
 @export var today_customer_served : int = 0
 @export var today_profit : int = 0
+
+@export var bgm_volume : float = -10.0
+@export var sgx_volume : float = 0.0
+@export var audio_muted : bool = false

@@ -48,6 +48,7 @@ func try_spawn_customer() -> void:
 
 func _spawn_customer() -> void:
 	has_active_customer = true
+	AudioManager.play_sfx("npc_walking", 0.2, -15.0)
 	chosen_customer_data = customer_data_pool.pick_random()
 	var viewport_x := get_viewport_rect().size.x
 	current_customer = customer_scene.instantiate()
@@ -63,11 +64,11 @@ func _spawn_customer() -> void:
 	SignalBus.customer_spawned.emit()
 
 func _on_customer_arrived() -> void:
-	_generate_request()
+	speech_label.visible = false
 	customer_ui.visible = true
+	_generate_request()
 	happy_bar.max_value = chosen_customer_data.starting_happy_meter
 	happy_bar.value = current_happiness
-	speech_label.visible = false
 	_update_request_label()
 
 func _on_item_body_entered(body: RigidBody2D) -> void:
@@ -77,6 +78,7 @@ func _on_item_body_entered(body: RigidBody2D) -> void:
 	var dropped_item : ItemData = body.get_meta("item_data")
 	var matched : PackData = _find_matching_request(dropped_pack, dropped_item)
 	if matched != null:
+		AudioManager.play_sfx("correct_item")
 		customer_requested_items.erase(matched)
 		PlayerManager.increase_player_money(dropped_item.sell_price)
 		body.set_deferred("freeze", true)
@@ -90,6 +92,7 @@ func _on_item_body_entered(body: RigidBody2D) -> void:
 			_customer_leave_happy()
 	else:
 		#if item dropped is wrong, decrease customer happiness and return to player's inventory
+		AudioManager.play_sfx("wrong_item")
 		current_happiness -= chosen_customer_data.wrong_item_penalty
 		current_happiness = maxi(current_happiness, 0)
 		happy_bar.value = current_happiness
@@ -112,6 +115,9 @@ func _find_matching_request(pack: PackData, item: ItemData) -> PackData:
 func _generate_request() -> void:
 	var count : int = randi_range(chosen_customer_data.min_request_count, chosen_customer_data.max_request_count)
 	var source_pool : Array[PackData] = _get_available_items()
+	if source_pool == null or source_pool.is_empty():
+		_customer_leave_angry()
+		return
 	customer_requested_items = []
 	for i in range(count):
 		var picked : PackData = source_pool.pick_random()
@@ -130,8 +136,11 @@ func _customer_leave_angry() -> void:
 	speech_label.text = line
 	speech_label.visible = true
 	current_customer.leave()
+	var leaving_customer := current_customer.get_instance_id()
+	has_active_customer = false
+	AudioManager.play_sfx("customer_angry_sfx")
 	await get_tree().create_timer(1.5).timeout
-	_cleanup_customer()
+	_cleanup_customer(leaving_customer)
 	SignalBus.customer_left.emit()
 
 func _customer_leave_happy() -> void:
@@ -139,9 +148,32 @@ func _customer_leave_happy() -> void:
 	speech_label.text = "Thank You!"
 	speech_label.visible = true
 	current_customer.leave()
+	var leaving_customer := current_customer.get_instance_id()
+	has_active_customer = false
+	AudioManager.play_sfx("customer_happy_sfx")
 	await get_tree().create_timer(1.5).timeout
-	_cleanup_customer()
+	_cleanup_customer(leaving_customer)
 	SignalBus.customer_left.emit()
+
+func reject_current_customer() -> void:
+	var line : String = chosen_customer_data.angry_lines.pick_random()
+	speech_label.text = line
+	speech_label.visible = true
+	current_customer.leave()
+	var leaving_customer := current_customer.get_instance_id()
+	has_active_customer = false
+	await get_tree().create_timer(1.5).timeout
+	_cleanup_customer(leaving_customer)
+	SignalBus.customer_left.emit()
+
+func _cleanup_customer(leaving_id : int) -> void:
+	if current_customer == null or current_customer.get_instance_id() == leaving_id :
+		current_customer = null
+		has_active_customer = false
+		chosen_customer_data = null
+		customer_requested_items = []
+		current_happiness = 100
+		customer_ui.visible = false
 
 func _get_available_items() -> Array[PackData]:
 	if !chosen_customer_data.can_buy_all_packs:
@@ -164,29 +196,14 @@ func _get_available_items() -> Array[PackData]:
 							items.append(slot.current_pack)
 	return items
 
-func _cleanup_customer() -> void:
-	current_customer = null
-	has_active_customer = false
-	chosen_customer_data = null
-	customer_requested_items = []
-	current_happiness = 100
-	customer_ui.visible = false
-
 func _update_request_label() -> void:
 	if customer_requested_items.is_empty():
+		customer_ui.visible = false
 		print("No request")
 		return
+	customer_ui.visible = true
 	var names : Array[String] = []
 	for pack : PackData in customer_requested_items:
 		if pack.item_data != null:
 			names.append(pack.item_data.item_name)
 	request_label.text = "I need " + ", ".join(names)
-
-func reject_current_customer() -> void:
-	var line : String = chosen_customer_data.angry_lines.pick_random()
-	speech_label.text = line
-	speech_label.visible = true
-	current_customer.leave()
-	await get_tree().create_timer(1.5).timeout
-	_cleanup_customer()
-	SignalBus.customer_left.emit()

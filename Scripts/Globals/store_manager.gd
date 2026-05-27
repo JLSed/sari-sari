@@ -3,12 +3,15 @@ extends Node2D
 signal phase_changed(is_day_phase: bool)
 signal entered_preparation_phase
 signal entered_day_phase
+signal pack_edit_mode_changed(enabled: bool)
 
 var is_day_phase: bool = false
 var is_day_ended: bool = false
+var pack_edit_mode: bool = false
 
 func enter_preparation_phase() -> void:
 	is_day_phase = false
+	is_day_ended = false
 	phase_changed.emit(is_day_phase)
 	entered_preparation_phase.emit()
 
@@ -18,8 +21,13 @@ func enter_day_phase() -> void:
 	entered_day_phase.emit()
 
 func enter_end_day_phase() -> void:
+	is_day_phase = false
 	is_day_ended = true
 	SignalBus.day_ended.emit()
+
+func set_pack_edit_mode(enabled: bool) -> void:
+	pack_edit_mode = enabled
+	pack_edit_mode_changed.emit(enabled)
 
 func get_store_attraction_rate() -> float:
 	if !PlayerManager.player_progress:

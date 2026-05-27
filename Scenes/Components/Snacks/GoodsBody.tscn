@@ -7,7 +7,7 @@ height = 18.0
 [node name="GoodsBody" type="RigidBody2D" unique_id=1271600159 groups=["dropped_pack"]]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=133412238]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786140612]
 shape = SubResource("CapsuleShape2D_46mtl")

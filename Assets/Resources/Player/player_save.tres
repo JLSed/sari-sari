@@ -6,18 +6,27 @@
 [ext_resource type="Script" uid="uid://jdq1cx1mg4x6" path="res://Scripts/Regulars/Resources/purchased_pack_entry.gd" id="4_7mft6"]
 [ext_resource type="Resource" uid="uid://b6iwo3e6nhvh1" path="res://Assets/Resources/Container/container1.tres" id="4_dxecr"]
 [ext_resource type="Script" uid="uid://ccntbgwytggq8" path="res://Scripts/Regulars/Resources/PendingDeliveryEntry.gd" id="5_7mft6"]
-[ext_resource type="Resource" uid="uid://6cqvaewfwkwp" path="res://Assets/Resources/Pack/stikuInPack.tres" id="6_trl4y"]
+[ext_resource type="Resource" uid="uid://dv5dx33k5xij" path="res://Assets/Resources/Pack/closerInPack.tres" id="6_7mft6"]
+[ext_resource type="Resource" uid="uid://bh3egumhe3mrs" path="res://Assets/Resources/Pack/lumpiaInPack.tres" id="7_7mft6"]
 
 [sub_resource type="Resource" id="Resource_7mft6"]
 script = ExtResource("4_7mft6")
-pack_data = ExtResource("6_trl4y")
+pack_data = ExtResource("6_7mft6")
 quantity = 99
+metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
+
+[sub_resource type="Resource" id="Resource_diy47"]
+script = ExtResource("4_7mft6")
+pack_data = ExtResource("7_7mft6")
+quantity = 12
 metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
 
 [resource]
 script = ExtResource("1_di7ls")
 current_store = ExtResource("1_sowfl")
-purchased_goods = Array[ExtResource("4_7mft6")]([SubResource("Resource_7mft6")])
+purchased_goods = Array[ExtResource("4_7mft6")]([SubResource("Resource_7mft6"), SubResource("Resource_diy47")])
 owned_containers = Array[ExtResource("2_dxecr")]([ExtResource("4_dxecr")])
 money = 123
+bgm_volume = -12.0
+sgx_volume = -5.0
 metadata/_custom_type_script = "uid://bqax3cfhc14fj"

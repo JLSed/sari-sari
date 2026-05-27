@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Sari-Sari"
-config/version="a0.0"
+config/version="dev4.0"
 run/main_scene="uid://b2p7tlxne0gw6"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/Icons/icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://be2wo6bmfkin4"
 
 [autoload]
 
@@ -22,6 +26,7 @@ Enums="*uid://bml2vwqhpxjt6"
 SignalBus="*uid://4sg2mgr56elj"
 PlayerManager="*uid://ch38dfo383iqr"
 StoreManager="*uid://cm8chxdxtoh6f"
+AudioManager="*uid://b2g628220e2su"
 
 [debug]
 

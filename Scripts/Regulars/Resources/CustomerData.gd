@@ -14,6 +14,7 @@ class_name CustomerData extends Resource
 @export var angry_lines : Array[String] = [
 	"Hay nako! ang tagal",
 	"Mag sara na kayo!",
-	"Nasayang lang oras",
+	"Nasayang lang oras ko!",
 	"I'm never coming back!",
+	"Uso mag restock!"
 ]

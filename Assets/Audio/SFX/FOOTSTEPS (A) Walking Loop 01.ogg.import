@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://djmfatqniqal2"
+path="res://.godot/imported/FOOTSTEPS (A) Walking Loop 01.ogg-91a6f6f7d1f08a62fd4f42db514f97c4.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/FOOTSTEPS (A) Walking Loop 01.ogg"
+dest_files=["res://.godot/imported/FOOTSTEPS (A) Walking Loop 01.ogg-91a6f6f7d1f08a62fd4f42db514f97c4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

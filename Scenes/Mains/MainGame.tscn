@@ -15,21 +15,29 @@
 [ext_resource type="PackedScene" uid="uid://dgdaggdywr3vn" path="res://Scenes/Components/customer.tscn" id="6_h27ij"]
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="9_34a8a"]
 [ext_resource type="Script" uid="uid://d3hv81yc2ihcx" path="res://Scripts/Regulars/Manager/customer_manager.gd" id="9_hpam1"]
+[ext_resource type="Resource" uid="uid://tr1pocgxptgr" path="res://Assets/Resources/Customers/customer2.tres" id="9_kdnim"]
 [ext_resource type="Texture2D" uid="uid://cohitxj3b8a7g" path="res://Assets/UI/edit_container_icon.png" id="9_r20ap"]
 [ext_resource type="Texture2D" uid="uid://c4m7ayhm48p7x" path="res://Assets/UI/UI_Flat_Banner01a.png" id="10_ctput"]
 [ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="10_e185e"]
 [ext_resource type="Script" uid="uid://bvl64n1isbmnx" path="res://Scripts/Regulars/Manager/delivery_man_manager.gd" id="10_eablw"]
+[ext_resource type="Resource" uid="uid://e6cattecfaj3" path="res://Assets/Resources/Customers/customer3.tres" id="10_hlgf4"]
 [ext_resource type="Texture2D" uid="uid://bs5htwsswmpvd" path="res://Assets/UI/light_toggle_icon.png" id="10_kk8dm"]
 [ext_resource type="Texture2D" uid="uid://dw1dksjtue0r3" path="res://Assets/UI/UI_Flat_Frame02a.png" id="10_lpgiv"]
+[ext_resource type="Resource" uid="uid://bfdhletnlmkmk" path="res://Assets/Resources/Customers/customer4.tres" id="11_ygcq6"]
 [ext_resource type="Texture2D" uid="uid://daha6o0duwfvq" path="res://Assets/UI/phone_icon.png" id="12_4p06b"]
+[ext_resource type="Resource" uid="uid://c17v0efhvj845" path="res://Assets/Resources/Customers/customer5.tres" id="12_trlcj"]
+[ext_resource type="Resource" uid="uid://iixaa4l1qud1" path="res://Assets/Resources/Customers/customer6.tres" id="13_gfs5d"]
 [ext_resource type="Texture2D" uid="uid://8jl6cp0w0k10" path="res://Assets/UI/phone_background.png" id="13_n4j5h"]
 [ext_resource type="Script" uid="uid://bvwsuglibmj5q" path="res://Scripts/Scenes/Components/UI/phone_controller.gd" id="14_0eyv7"]
+[ext_resource type="Resource" uid="uid://b06olcatpxy3h" path="res://Assets/Resources/Customers/customer7.tres" id="14_e4sis"]
 [ext_resource type="Texture2D" uid="uid://f65q4fl2emlu" path="res://Assets/UI/assorted-coin-stack.png" id="14_h27ij"]
 [ext_resource type="Texture2D" uid="uid://bgweftf2ykjr3" path="res://Assets/UI/brown_pressed.png" id="14_tnxsb"]
 [ext_resource type="Texture2D" uid="uid://03ronwkagnn1" path="res://Assets/UI/shopy_icon.png" id="14_wdjql"]
 [ext_resource type="PackedScene" uid="uid://cpaukns4o7xbu" path="res://Scenes/Components/UI/ShopyApp.tscn" id="15_0eyv7"]
 [ext_resource type="Texture2D" uid="uid://bw166vyhxanoj" path="res://Assets/UI/containershop_icon.png" id="15_nbd5i"]
+[ext_resource type="Resource" uid="uid://5i1ess02a26g" path="res://Assets/Resources/Customers/customer8.tres" id="15_uc70p"]
 [ext_resource type="PackedScene" uid="uid://dvd0c8ikcxf7g" path="res://Scenes/Components/UI/ContainerShopApp.tscn" id="16_e185e"]
+[ext_resource type="Texture2D" uid="uid://cw8vc645t5rae" path="res://Assets/UI/edit_packs_icon.png" id="22_eablw"]
 [ext_resource type="Texture2D" uid="uid://cy3c8pnddf1yb" path="res://Assets/UI/UI_Flat_Banner04a.png" id="28_oests"]
 [ext_resource type="Texture2D" uid="uid://cn0uya57c5bqp" path="res://Assets/UI/UI_Flat_Banner02a.png" id="29_occbj"]
 
@@ -74,6 +82,14 @@ region = Rect2(21, 0, 21, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p06b"]
 atlas = ExtResource("10_kk8dm")
 region = Rect2(0, 0, 21, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eablw"]
+texture = ExtResource("10_lpgiv")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+region_rect = Rect2(0, 0, 96, 64)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j04qb"]
 texture = ExtResource("28_oests")
@@ -181,7 +197,7 @@ script = ExtResource("3_yga5l")
 [node name="CustomerManager" type="Node2D" parent="." unique_id=1612262793]
 script = ExtResource("9_hpam1")
 customer_scene = ExtResource("6_h27ij")
-customer_data_pool = Array[ExtResource("3_5hte8")]([ExtResource("4_1fjp5")])
+customer_data_pool = Array[ExtResource("3_5hte8")]([ExtResource("4_1fjp5"), ExtResource("9_kdnim"), ExtResource("10_hlgf4"), ExtResource("11_ygcq6"), ExtResource("12_trlcj"), ExtResource("13_gfs5d"), ExtResource("14_e4sis"), ExtResource("15_uc70p")])
 
 [node name="DeliveryManManager" type="Node2D" parent="." unique_id=922665250]
 script = ExtResource("10_eablw")
@@ -238,10 +254,10 @@ mouse_filter = 2
 [node name="StartDayBG" type="NinePatchRect" parent="UI" unique_id=252648050]
 clip_contents = true
 layout_mode = 0
-offset_left = 103.0
-offset_top = 50.0
-offset_right = 197.0
-offset_bottom = 76.0
+offset_left = 118.0
+offset_top = 33.0
+offset_right = 182.0
+offset_bottom = 59.0
 texture = ExtResource("10_ctput")
 patch_margin_left = 13
 patch_margin_top = 5
@@ -250,22 +266,22 @@ patch_margin_bottom = 2
 
 [node name="StartDayButton" type="Button" parent="UI/StartDayBG" unique_id=997572751]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -39.0
-offset_top = -23.0
-offset_right = 39.0
-offset_bottom = 5.0
+anchor_bottom = 0.5
+offset_left = -23.5
+offset_top = -7.5
+offset_right = 23.5
+offset_bottom = 13.5
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_colors/font_color = Color(0.8177258, 0.57849026, 0.39531383, 1)
 theme_override_colors/font_hover_color = Color(0.8156863, 0.5764706, 0.39607844, 1)
 theme_override_constants/line_spacing = -3
 theme_override_fonts/font = ExtResource("10_e185e")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 7
 text = "START
 THE DAY"
 flat = true
@@ -336,6 +352,19 @@ texture_disabled = ExtResource("9_r20ap")
 texture_focused = ExtResource("9_r20ap")
 metadata/_edit_use_anchors_ = true
 
+[node name="EditPacksButton" type="TextureButton" parent="UI" unique_id=525335235]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -17.765823
+offset_right = 71.0
+offset_bottom = 2.2341766
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("22_eablw")
+
 [node name="PhoneButton" type="Button" parent="UI" unique_id=426844794]
 layout_mode = 1
 anchors_preset = 3
@@ -385,6 +414,27 @@ theme_override_fonts/font = ExtResource("9_34a8a")
 theme_override_font_sizes/font_size = 12
 text = "10:23"
 horizontal_alignment = 2
+
+[node name="EditLabelContainer" type="PanelContainer" parent="UI" unique_id=1350455316]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_top = 51.0
+offset_right = 96.0
+offset_bottom = 77.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_eablw")
+
+[node name="Label" type="Label" parent="UI/EditLabelContainer" unique_id=2012547228]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_e185e")
+theme_override_font_sizes/font_size = 12
+text = "EDIT MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CustomerUI" type="Control" parent="." unique_id=441525475]
 visible = false
@@ -643,6 +693,7 @@ shape = SubResource("RectangleShape2D_1fjp5")
 [connection signal="pressed" from="UI/StartDayBG/StartDayButton" to="." method="_on_start_day_button_pressed"]
 [connection signal="toggled" from="UI/LightButton" to="." method="_on_light_button_toggled"]
 [connection signal="pressed" from="UI/ContainerButton" to="." method="_on_container_button_pressed"]
+[connection signal="pressed" from="UI/EditPacksButton" to="." method="_on_edit_packs_button_pressed"]
 [connection signal="pressed" from="UI/PhoneButton" to="." method="_on_phone_button_pressed"]
 [connection signal="pressed" from="CustomerUI/RejectButton" to="." method="_on_reject_button_pressed"]
 [connection signal="pressed" from="PhoneUI/Background" to="." method="_on_background_pressed"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CustomerData" format=3 uid="uid://b06olcatpxy3h"]
+
+[ext_resource type="Script" uid="uid://bp4lvgeddtvx5" path="res://Scripts/Regulars/Resources/PackData.gd" id="1_03kkc"]
+[ext_resource type="Texture2D" uid="uid://03o3xe168h63" path="res://Assets/Sprites/NPC/tanod1.png" id="2_03kkc"]
+[ext_resource type="Script" uid="uid://17w705p6mn8h" path="res://Scripts/Regulars/Resources/CustomerData.gd" id="3_xwfvv"]
+
+[resource]
+script = ExtResource("3_xwfvv")
+customer_sprite = ExtResource("2_03kkc")
+can_buy_all_packs = true
+metadata/_custom_type_script = "uid://17w705p6mn8h"
