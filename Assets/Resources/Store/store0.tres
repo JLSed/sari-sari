@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("1_jenuf")
+store_name = "Wooden"
 store_texture = ExtResource("2_7s73g")
-attraction_rate = 0.15
+attraction_rate = 0.4
 metadata/_custom_type_script = "uid://cn65cuy7dugjx"

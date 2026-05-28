@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://j4vm2iq3w1i4"]
+
+[ext_resource type="Texture2D" uid="uid://b70ushojmh0ch" path="res://Assets/UI/white_pressed.png" id="1_3i1rl"]
+[ext_resource type="Script" uid="uid://bgedpp3y4eo35" path="res://Scripts/Scenes/Components/UI/remainder.gd" id="2_5rljm"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="2_tj1wy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5rljm"]
+texture = ExtResource("1_3i1rl")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Remainder" type="PanelContainer" unique_id=1047774846]
+offset_right = 80.0
+offset_bottom = 13.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5rljm")
+script = ExtResource("2_5rljm")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1092877847]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = -2
+theme_override_fonts/normal_font = ExtResource("2_tj1wy")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_font_sizes/bold_italics_font_size = 8
+theme_override_font_sizes/italics_font_size = 8
+theme_override_font_sizes/mono_font_size = 8
+text = "test test testsdfsdf
+sdfsdf
+sdfsdfs
+dfs
+dfs
+df
+sdfsdf"
+fit_content = true
+horizontal_alignment = 2
+vertical_alignment = 1

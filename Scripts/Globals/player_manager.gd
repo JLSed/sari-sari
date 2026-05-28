@@ -3,6 +3,7 @@ extends Node
 @export var player_progress: PlayerProgress
 
 signal money_changed()
+signal store_switched()
 
 # Tracks store goods bought from the phone (Dictionary: ItemID -> Amount)
 var warehouse_stock: Dictionary = {}
@@ -91,9 +92,33 @@ func update_money_ui() -> String:
 func has_pending_deliveres() -> bool:
 	return !player_progress.pending_deliveries.is_empty()
 
-func deliver_pending_packs() -> void:
+func spawn_pending_delivery_packs() -> void:
+	var main_game : Node = get_tree().get_first_node_in_group("main_game_scene")
+	StoreManager.spawn_speech_label("Shopy Delivery!")
+	if main_game == null:
+		# Fallback: if main_game not found, add packs directly
+		for entry: PendingDeliveryEntry in player_progress.pending_deliveries:
+			add_pack_quantity(entry.pack_data, entry.quantity)
+		player_progress.pending_deliveries.clear()
+		return
+
+	var viewport_size : Vector2 = main_game.get_viewport_rect().size
+	var center : Vector2 = viewport_size / 2.0
+
 	for entry: PendingDeliveryEntry in player_progress.pending_deliveries:
-		add_pack_quantity(entry.pack_data, entry.quantity)
+		if entry.pack_data == null or entry.pack_data.item_data == null:
+			continue
+		for i in range(entry.quantity):
+			var goods_body : RigidBody2D = entry.pack_data.item_data.item_body.instantiate()
+			main_game.add_child(goods_body)
+			goods_body.global_position = Vector2(center.x + randf_range(-20.0, 20.0), center.y)
+			goods_body.rotation_degrees = randf_range(0.0, 360.0)
+			goods_body.get_child(0).texture = entry.pack_data.item_data.item_sprite
+			goods_body.set_meta("pack_data", entry.pack_data)
+			goods_body.set_meta("item_data", entry.pack_data.item_data)
+			goods_body.add_to_group("dropped_pack")
+			await get_tree().create_timer(0.08).timeout
+
 	player_progress.pending_deliveries.clear()
 
 func record_customer_served() -> void:
@@ -104,3 +129,18 @@ func to_next_day() -> void:
 	player_progress.current_day += 1
 	player_progress.today_customer_served = 0
 	player_progress.today_profit = 0
+
+func owns_store(store: StoreStat) -> bool:
+	for owned: StoreStat in player_progress.owned_stores:
+		if owned == store or owned.store_name == store.store_name:
+			return true
+	return false
+
+func buy_store(store: StoreStat) -> void:
+	if owns_store(store):
+		return
+	player_progress.owned_stores.append(store)
+
+func switch_store(store: StoreStat) -> void:
+	player_progress.current_store = store
+	store_switched.emit()

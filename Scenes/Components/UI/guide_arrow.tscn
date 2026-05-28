@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://be5p1wl81ldfh"]
+
+[ext_resource type="Texture2D" uid="uid://cjxyfa8c1r05p" path="res://Assets/UI/UI_TravelBookAnimated_Spritesheet01a.png" id="1_lajq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2n0l"]
+atlas = ExtResource("1_lajq2")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7n2i"]
+atlas = ExtResource("1_lajq2")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5md42"]
+atlas = ExtResource("1_lajq2")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65f75"]
+atlas = ExtResource("1_lajq2")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41386"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2n0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7n2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5md42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65f75")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="GuideArrow" type="AnimatedSprite2D" unique_id=431992791]
+sprite_frames = SubResource("SpriteFrames_41386")
+autoplay = "default"
+frame = 3
+frame_progress = 0.52386934

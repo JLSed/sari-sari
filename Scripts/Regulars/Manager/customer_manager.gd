@@ -13,7 +13,6 @@ var chosen_customer_data : CustomerData
 var customer_ui : Control
 var happy_bar : ProgressBar
 var request_label : RichTextLabel
-var speech_label : Label
 var customer_container : Node2D
 var store_sections : Array[StoreSection]
 
@@ -23,15 +22,14 @@ func initialize(
 	p_customer_ui: Control,
 	p_happy_bar: ProgressBar,
 	p_request_label: RichTextLabel,
-	p_speech_label: Label
 ) -> void:
 	customer_container = p_customer_container
 	store_sections = p_store_sections
 	customer_ui = p_customer_ui
 	happy_bar = p_happy_bar
 	request_label = p_request_label
-	speech_label = p_speech_label
 	SignalBus.customer_arrived.connect(_on_customer_arrived)
+
 
 func try_spawn_customer() -> void:
 	if has_active_customer:
@@ -64,7 +62,7 @@ func _spawn_customer() -> void:
 	SignalBus.customer_spawned.emit()
 
 func _on_customer_arrived() -> void:
-	speech_label.visible = false
+	AudioManager.play_voice(chosen_customer_data.voices_pool.pick_random())
 	customer_ui.visible = true
 	_generate_request()
 	happy_bar.max_value = chosen_customer_data.starting_happy_meter
@@ -116,6 +114,9 @@ func _generate_request() -> void:
 	var count : int = randi_range(chosen_customer_data.min_request_count, chosen_customer_data.max_request_count)
 	var source_pool : Array[PackData] = _get_available_items()
 	if source_pool == null or source_pool.is_empty():
+		StoreManager.spawn_remainder("Add packs to your containers to start selling!")
+		var main_game := get_tree().get_first_node_in_group("main_game_scene")
+		main_game.spawn_guide_arrow(main_game.edit_packs_button)
 		_customer_leave_angry()
 		return
 	customer_requested_items = []
@@ -133,32 +134,30 @@ func decay_customer_happiness() -> void:
 
 func _customer_leave_angry() -> void:
 	var line : String = chosen_customer_data.angry_lines.pick_random()
-	speech_label.text = line
-	speech_label.visible = true
+	StoreManager.spawn_speech_label(line)
 	current_customer.leave()
 	var leaving_customer := current_customer.get_instance_id()
 	has_active_customer = false
 	AudioManager.play_sfx("customer_angry_sfx")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	_cleanup_customer(leaving_customer)
 	SignalBus.customer_left.emit()
 
 func _customer_leave_happy() -> void:
 	PlayerManager.record_customer_served()
-	speech_label.text = "Thank You!"
-	speech_label.visible = true
+	StoreManager.spawn_speech_label("Thank You!")
 	current_customer.leave()
 	var leaving_customer := current_customer.get_instance_id()
 	has_active_customer = false
 	AudioManager.play_sfx("customer_happy_sfx")
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(0.5).timeout
 	_cleanup_customer(leaving_customer)
 	SignalBus.customer_left.emit()
 
 func reject_current_customer() -> void:
+	customer_ui.visible = false
 	var line : String = chosen_customer_data.angry_lines.pick_random()
-	speech_label.text = line
-	speech_label.visible = true
+	StoreManager.spawn_speech_label(line)
 	current_customer.leave()
 	var leaving_customer := current_customer.get_instance_id()
 	has_active_customer = false

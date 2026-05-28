@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://cxdfeyx1tdoxl"]
+
+[ext_resource type="Script" uid="uid://g5lf1tkbt6tl" path="res://Scripts/Scenes/Components/UI/store_upgrade_app.gd" id="1_awj51"]
+[ext_resource type="Texture2D" uid="uid://co30qd426tcls" path="res://Assets/UI/storeupgrade_background.png" id="2_awj51"]
+[ext_resource type="PackedScene" uid="uid://cmga75hob1hc1" path="res://Scenes/Components/UI/StoreUpgradeItemCard.tscn" id="2_itmc4"]
+[ext_resource type="FontFile" uid="uid://cghkwi3mwcvpa" path="res://Assets/Fonts/monogram-extended-italic.ttf" id="3_75p6b"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="4_nd4ui"]
+
+[node name="ContainerShop" type="Control" unique_id=887013993]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_awj51")
+StoreUpgradeItemCardUI = ExtResource("2_itmc4")
+
+[node name="ShopyBackground" type="TextureRect" parent="." unique_id=1190830837]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -135.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("2_awj51")
+
+[node name="Label" type="Label" parent="ShopyBackground" unique_id=891848982]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.895447
+offset_top = 12.09511
+offset_right = 50.69815
+offset_bottom = 35.095108
+grow_horizontal = 2
+theme_override_constants/line_spacing = -5
+theme_override_fonts/font = ExtResource("3_75p6b")
+theme_override_font_sizes/font_size = 12
+text = "Store Upgrade
+Portal"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="ShopyBackground" unique_id=382223472]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.641228
+offset_top = 13.913041
+offset_right = -22.666985
+offset_bottom = 28.91304
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_focus_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("4_nd4ui")
+theme_override_font_sizes/font_size = 8
+text = "Go Back"
+flat = true
+
+[node name="HScrollBar" type="ScrollContainer" parent="." unique_id=1595178667]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = -105.0
+offset_right = 56.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HScrollBar" unique_id=1809821712]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="ContainersContainer" type="GridContainer" parent="HScrollBar/MarginContainer" unique_id=165428012]
+layout_mode = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+
+[connection signal="pressed" from="ShopyBackground/BackButton" to="." method="_on_back_button_pressed"]

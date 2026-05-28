@@ -8,21 +8,25 @@
 [ext_resource type="PackedScene" uid="uid://by8dnq1t4xo7b" path="res://Scenes/Components/UI/remove_button.tscn" id="4_b4ck2"]
 
 [sub_resource type="Resource" id="Resource_b4ck2"]
+resource_local_to_scene = true
 script = ExtResource("3_jk1tb")
 container_id = 1
 metadata/_custom_type_script = "uid://deo6y7tj5y30l"
 
 [sub_resource type="Resource" id="Resource_5sswk"]
+resource_local_to_scene = true
 script = ExtResource("3_jk1tb")
 container_id = 1
 metadata/_custom_type_script = "uid://deo6y7tj5y30l"
 
 [sub_resource type="Resource" id="Resource_7reet"]
+resource_local_to_scene = true
 script = ExtResource("3_jk1tb")
 container_id = 1
 metadata/_custom_type_script = "uid://deo6y7tj5y30l"
 
 [sub_resource type="Resource" id="Resource_4wji2"]
+resource_local_to_scene = true
 script = ExtResource("3_jk1tb")
 container_id = 1
 metadata/_custom_type_script = "uid://deo6y7tj5y30l"

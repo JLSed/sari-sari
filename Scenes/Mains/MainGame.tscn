@@ -37,9 +37,12 @@
 [ext_resource type="Texture2D" uid="uid://bw166vyhxanoj" path="res://Assets/UI/containershop_icon.png" id="15_nbd5i"]
 [ext_resource type="Resource" uid="uid://5i1ess02a26g" path="res://Assets/Resources/Customers/customer8.tres" id="15_uc70p"]
 [ext_resource type="PackedScene" uid="uid://dvd0c8ikcxf7g" path="res://Scenes/Components/UI/ContainerShopApp.tscn" id="16_e185e"]
+[ext_resource type="PackedScene" uid="uid://cxdfeyx1tdoxl" path="res://Scenes/Components/UI/StoreUpgradeApp.tscn" id="17_stupr"]
 [ext_resource type="Texture2D" uid="uid://cw8vc645t5rae" path="res://Assets/UI/edit_packs_icon.png" id="22_eablw"]
 [ext_resource type="Texture2D" uid="uid://cy3c8pnddf1yb" path="res://Assets/UI/UI_Flat_Banner04a.png" id="28_oests"]
 [ext_resource type="Texture2D" uid="uid://cn0uya57c5bqp" path="res://Assets/UI/UI_Flat_Banner02a.png" id="29_occbj"]
+[ext_resource type="Texture2D" uid="uid://bfrtt2fd4200" path="res://Assets/UI/UI_TravelBook_Spritesheet01a.png" id="31_1w0qv"]
+[ext_resource type="Texture2D" uid="uid://dw05lim77m3u7" path="res://Assets/UI/storeupgrade_icon.png" id="39_e4sis"]
 
 [sub_resource type="GDScript" id="GDScript_s812k"]
 script/source = "class_name GoodsContainerData extends Resource
@@ -82,6 +85,10 @@ region = Rect2(21, 0, 21, 20)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4p06b"]
 atlas = ExtResource("10_kk8dm")
 region = Rect2(0, 0, 21, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_royf5"]
+atlas = ExtResource("31_1w0qv")
+region = Rect2(209, 673, 14, 14)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eablw"]
 texture = ExtResource("10_lpgiv")
@@ -309,14 +316,18 @@ layout_mode = 2
 texture = ExtResource("14_h27ij")
 expand_mode = 2
 
-[node name="MoneyLabel" type="Label" parent="UI/MoneyLabelBG/HBoxContainer" unique_id=2081870270]
+[node name="MarginContainer" type="MarginContainer" parent="UI/MoneyLabelBG/HBoxContainer" unique_id=177783038]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+
+[node name="MoneyLabel" type="Label" parent="UI/MoneyLabelBG/HBoxContainer/MarginContainer" unique_id=2081870270]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("10_e185e")
-theme_override_font_sizes/font_size = 6
-text = "₱1,234"
+theme_override_font_sizes/font_size = 7
+text = "P1,234"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -372,15 +383,30 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -65.0
-offset_top = -25.24562
-offset_right = -37.0
-offset_bottom = 9.754379
+offset_left = -43.0
+offset_top = -23.0
+offset_right = -15.0
+offset_bottom = 12.0000305
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.6, 0.6)
 icon = ExtResource("12_4p06b")
 flat = true
+
+[node name="SettingsButton" type="TextureButton" parent="UI" unique_id=1938464864]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -19.0
+offset_right = -6.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = SubResource("AtlasTexture_royf5")
 
 [node name="TimeLabelBG" type="NinePatchRect" parent="UI" unique_id=14068600]
 layout_mode = 0
@@ -505,24 +531,6 @@ text = "1. test
 2. test
 3. test"
 
-[node name="SpeechLabel" type="Label" parent="CustomerUI" unique_id=100040642]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -9.06517
-offset_top = 10.216957
-offset_right = 29.93483
-offset_bottom = 17.216957
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/outline_size = 2
-theme_override_fonts/font = ExtResource("9_34a8a")
-theme_override_font_sizes/font_size = 8
-text = "customer line"
-
 [node name="PhoneUI" type="Control" parent="." unique_id=70818162]
 layout_mode = 3
 anchors_preset = 0
@@ -532,7 +540,8 @@ offset_bottom = 270.00043
 script = ExtResource("14_0eyv7")
 app_scenes = Dictionary[StringName, PackedScene]({
 &"ContainerShop": ExtResource("16_e185e"),
-&"Shopy": ExtResource("15_0eyv7")
+&"Shopy": ExtResource("15_0eyv7"),
+&"StoreUpgrade": ExtResource("17_stupr")
 })
 
 [node name="Background" type="TextureButton" parent="PhoneUI" unique_id=282121980]
@@ -569,6 +578,12 @@ custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_vertical = 0
 texture_normal = ExtResource("15_nbd5i")
+
+[node name="StoreUpgradeButton" type="TextureButton" parent="PhoneUI/HBoxContainer" unique_id=223091089]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("39_e4sis")
 
 [node name="AppContainer" type="Control" parent="PhoneUI" unique_id=803341783]
 layout_mode = 1
@@ -673,6 +688,27 @@ theme_override_fonts/font = ExtResource("10_e185e")
 theme_override_font_sizes/font_size = 8
 text = "Day Summary"
 
+[node name="RemainderUI" type="Control" parent="." unique_id=1597458807]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 233.00003
+offset_right = 317.00006
+offset_bottom = 144.99998
+scale = Vector2(0.8, 0.8)
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RemainderUI" unique_id=1731118708]
+layout_mode = 0
+offset_right = 84.0
+offset_bottom = 19.0
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RemainderUI/MarginContainer" unique_id=1587567480]
+layout_mode = 2
+
 [node name="PhoneUIAnimation" type="AnimationPlayer" parent="." unique_id=398768389]
 libraries/ = SubResource("AnimationLibrary_wdjql")
 
@@ -699,5 +735,6 @@ shape = SubResource("RectangleShape2D_1fjp5")
 [connection signal="pressed" from="PhoneUI/Background" to="." method="_on_background_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ShopyButton" to="PhoneUI" method="_on_shopy_button_pressed"]
 [connection signal="pressed" from="PhoneUI/HBoxContainer/ContainerShopButton" to="PhoneUI" method="_on_container_shop_button_pressed"]
+[connection signal="pressed" from="PhoneUI/HBoxContainer/StoreUpgradeButton" to="PhoneUI" method="_on_store_upgrade_button_pressed"]
 [connection signal="pressed" from="DaySummaryUI/ContentContainer/MarginContainer/VBoxContainer/MarginContainer/NextDayButton" to="." method="_on_next_day_button_pressed"]
 [connection signal="body_entered" from="ItemDroppedDetector" to="." method="_on_item_dropped_detector_body_entered"]

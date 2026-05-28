@@ -7,5 +7,6 @@
 [resource]
 script = ExtResource("3_333wu")
 customer_sprite = ExtResource("2_e1n1g")
+voices_pool = Array[String](["jastin1_lalaki", "rafael1_lalaki", "romer2_lalaki", "romer3_lalaki", "sed1_lalaki", "sed2_lalaki"])
 can_buy_all_packs = true
 metadata/_custom_type_script = "uid://17w705p6mn8h"

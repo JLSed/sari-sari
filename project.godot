@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sari-Sari"
-config/version="dev4.0"
+config/version="dev5.0"
 run/main_scene="uid://b2p7tlxne0gw6"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://Assets/Icons/icon.svg"
@@ -40,7 +40,6 @@ window/size/always_on_top=true
 window/size/window_width_override=1500
 window/size/window_height_override=675
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [file_customization]
 

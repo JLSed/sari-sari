@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_ro6gp")
+store_name = "Iron Bar"
+price = 150
 store_texture = ExtResource("2_nyhyj")
 attraction_rate = 0.8
 metadata/_custom_type_script = "uid://cn65cuy7dugjx"

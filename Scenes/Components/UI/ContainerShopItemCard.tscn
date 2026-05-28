@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="3_xqdtn"]
 [ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="5_g46rt"]
 
-[node name="Background" type="TextureRect" unique_id=869245247]
+[node name="ContainerShopItemCard" type="TextureRect" unique_id=869245247]
 clip_contents = true
 custom_minimum_size = Vector2(53, 64)
 size_flags_vertical = 0

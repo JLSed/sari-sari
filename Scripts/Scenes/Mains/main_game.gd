@@ -9,7 +9,7 @@ extends Node2D
 @onready var start_day_bg: NinePatchRect = $UI/StartDayBG
 @onready var time_label: Label = $UI/TimeLabelBG/TimeLabel
 @onready var phone_ui_animation: AnimationPlayer = $PhoneUIAnimation
-@onready var money_label: Label = $UI/MoneyLabelBG/HBoxContainer/MoneyLabel
+@onready var money_label: Label = $UI/MoneyLabelBG/HBoxContainer/MarginContainer/MoneyLabel
 @onready var edit_label_container: PanelContainer = $UI/EditLabelContainer
 
 
@@ -46,6 +46,7 @@ func  _ready() -> void:
 	front_store_image.texture = PlayerManager.player_progress.current_store.store_texture
 	_update_money_label()
 	PlayerManager.money_changed.connect(_update_money_label)
+	PlayerManager.store_switched.connect(_on_store_switched)
 	StoreManager.phase_changed.connect(_on_phase_changed)
 	StoreManager.entered_preparation_phase.connect(_on_preparation_phase)
 	SignalBus.day_ended.connect(_on_day_ended)
@@ -58,7 +59,6 @@ func  _ready() -> void:
 		$CustomerUI,
 		$CustomerUI/HappyBar,
 		$CustomerUI/RequestContainer/RequestLabel,
-		$CustomerUI/SpeechLabel
 	)
 	delivery_manager.initialize($CustomerContainer, start_day_bg)
 	StoreManager.enter_preparation_phase()
@@ -68,7 +68,10 @@ func _on_preparation_phase() -> void:
 		delivery_manager.spawn_deliveryman()
 
 func _update_money_label() -> void:
-	money_label.text = "₱"+ PlayerManager.update_money_ui()
+	money_label.text = "P"+ PlayerManager.update_money_ui()
+
+func _on_store_switched() -> void:
+	front_store_image.texture = PlayerManager.player_progress.current_store.store_texture
 
 func _process(delta: float) -> void:
 	if !StoreManager.is_day_phase:
@@ -151,6 +154,11 @@ func _on_container_button_pressed() -> void:
 		store_section.set_container_edit_mode(container_edit_mode)
 
 func _on_start_day_button_pressed() -> void:
+	if not _has_any_container():
+		AudioManager.play_sfx("wrong_item")
+		StoreManager.spawn_remainder("Place a container first to start the day!")
+		spawn_guide_arrow(container_button)
+		return
 	StoreManager.enter_day_phase()
 
 func _on_light_button_toggled(toggled_on: bool) -> void:
@@ -173,7 +181,31 @@ func _on_item_dropped_detector_body_entered(body: Node2D) -> void:
 		var tween : Tween = create_tween()
 		tween.tween_property(body, "modulate", Color(0.0, 0.0, 0.0, 0.0), 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CIRC)
 		tween.tween_callback(body.queue_free)
+		AudioManager.play_sfx("item_added")
 		print("dropped " + dropped_pack.item_data.item_name + " added to inventory")
 
 func _on_edit_packs_button_pressed() -> void:
 	_set_edit_pack_mode(!pack_edit_mode)
+
+func _has_any_container() -> bool:
+	for section in store_sections:
+		if section.current_container != null:
+			return true
+	return false
+
+func spawn_guide_arrow(target : Control) -> void:
+	# remove any existing arrow
+	for arrow in get_tree().get_nodes_in_group("guide_arrow"):
+		arrow.queue_free()
+	 
+	var guide_arrow_scene : PackedScene = preload("res://Scenes/Components/UI/guide_arrow.tscn")
+	var arrow : AnimatedSprite2D = guide_arrow_scene.instantiate()
+	arrow.flip_h = true
+	arrow.flip_v = true
+	arrow.add_to_group("guide_arrow")
+	arrow.position = Vector2(target.global_position.x, target.global_position.y)
+	add_child(arrow)
+	var tween := create_tween()
+	tween.tween_interval(3.0)
+	tween.tween_property(arrow, "modulate:a", 0.0, 0.5)
+	tween.tween_callback(arrow.queue_free)

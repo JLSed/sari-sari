@@ -17,7 +17,7 @@ func _ready() -> void:
 	container_sprite.texture = container_texture
 	for i in range(slot_buttons.size()):
 		# make sure the current pack is unique
-		pack_per_slot[i].resource_local_to_scene = true
+		pack_per_slot[i] = pack_per_slot[i].duplicate()
 		slot_buttons[i].pressed.connect(_on_slot_button_pressed.bind(i))
 	StoreManager.phase_changed.connect(_on_phase_changed)
 	#pick up the current pack_edit_mode state when this container is created

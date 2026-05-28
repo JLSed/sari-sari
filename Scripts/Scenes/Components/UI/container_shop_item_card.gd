@@ -12,7 +12,7 @@ var _is_owned : bool = false
 func setup(container: GoodsContainerEntry) -> void:
 	_current_container = container
 	container_name.text = container.container_name
-	price_label.text = "₱" + str(container.price)
+	price_label.text = "P" + str(container.price)
 	if container.container_scene:
 		var inst : GoodsContainer = container.container_scene.instantiate()
 		container_image.texture = inst.container_texture

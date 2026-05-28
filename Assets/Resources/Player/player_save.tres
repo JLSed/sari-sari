@@ -1,32 +1,34 @@
 [gd_resource type="Resource" script_class="PlayerProgress" format=3 uid="uid://bc48orcxmhc4e"]
 
 [ext_resource type="Script" uid="uid://bqax3cfhc14fj" path="res://Scripts/Regulars/PlayerProgress.gd" id="1_di7ls"]
-[ext_resource type="Resource" uid="uid://cyal61kx6plim" path="res://Assets/Resources/Store/store1.tres" id="1_sowfl"]
 [ext_resource type="Script" uid="uid://dl0c0ncwhpd31" path="res://Scripts/Regulars/Resources/goodscontainer_entry.gd" id="2_dxecr"]
+[ext_resource type="Resource" uid="uid://d3584p6gepca8" path="res://Assets/Resources/Store/store0.tres" id="2_st0re"]
 [ext_resource type="Script" uid="uid://jdq1cx1mg4x6" path="res://Scripts/Regulars/Resources/purchased_pack_entry.gd" id="4_7mft6"]
 [ext_resource type="Resource" uid="uid://b6iwo3e6nhvh1" path="res://Assets/Resources/Container/container1.tres" id="4_dxecr"]
 [ext_resource type="Script" uid="uid://ccntbgwytggq8" path="res://Scripts/Regulars/Resources/PendingDeliveryEntry.gd" id="5_7mft6"]
 [ext_resource type="Resource" uid="uid://dv5dx33k5xij" path="res://Assets/Resources/Pack/closerInPack.tres" id="6_7mft6"]
+[ext_resource type="Script" uid="uid://cn65cuy7dugjx" path="res://Scripts/Regulars/Resources/StoreStats.gd" id="6_stscr"]
 [ext_resource type="Resource" uid="uid://bh3egumhe3mrs" path="res://Assets/Resources/Pack/lumpiaInPack.tres" id="7_7mft6"]
 
 [sub_resource type="Resource" id="Resource_7mft6"]
 script = ExtResource("4_7mft6")
 pack_data = ExtResource("6_7mft6")
-quantity = 99
+quantity = 16
 metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
 
 [sub_resource type="Resource" id="Resource_diy47"]
 script = ExtResource("4_7mft6")
 pack_data = ExtResource("7_7mft6")
-quantity = 12
+quantity = 32
 metadata/_custom_type_script = "uid://jdq1cx1mg4x6"
 
 [resource]
 script = ExtResource("1_di7ls")
-current_store = ExtResource("1_sowfl")
+current_store = ExtResource("2_st0re")
+owned_stores = Array[ExtResource("6_stscr")]([ExtResource("2_st0re")])
 purchased_goods = Array[ExtResource("4_7mft6")]([SubResource("Resource_7mft6"), SubResource("Resource_diy47")])
 owned_containers = Array[ExtResource("2_dxecr")]([ExtResource("4_dxecr")])
-money = 123
+money = 168
 bgm_volume = -12.0
 sgx_volume = -5.0
 metadata/_custom_type_script = "uid://bqax3cfhc14fj"

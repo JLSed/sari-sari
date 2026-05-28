@@ -12,7 +12,7 @@ func setup(item: PackData) -> void:
 	_current_item = item
 	item_image.texture = item.item_data.item_sprite
 	item_name.text = item.item_data.item_name
-	price_label.text = "₱" + str(item.item_data.price)
+	price_label.text = "P" + str(item.item_data.price)
 	amount_label.text = str(item.buy_amount)
 
 func _on_buy_button_pressed() -> void:

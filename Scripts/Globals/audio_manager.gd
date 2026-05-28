@@ -21,6 +21,7 @@ var sfx_volume_db: float = 0.0
 
 var bgm_tracks: Dictionary = {}
 var sfx_sounds : Dictionary = {}
+var voice_sounds : Dictionary = {}
 
 func _ready() -> void:
 
@@ -66,6 +67,18 @@ func _preload_audio() -> void:
 	sfx_sounds["correct_item"] = preload("res://Assets/Audio/SFX/Retro Blop StereoUP 09.wav")
 	sfx_sounds["click"] = preload("res://Assets/Audio/SFX/wrong_item.mp3")
 	sfx_sounds["wrong_item"] = preload("res://Assets/Audio/SFX/Retro Event Wrong Simple 03.wav")
+	sfx_sounds["item_added"] = preload("res://Assets/Audio/SFX/button_click.mp3")
+
+	voice_sounds["jastin1_lalaki"] = preload("res://Assets/Audio/Voices/jastin1-lalaki.ogg")
+	voice_sounds["kim1_ea"] = preload("res://Assets/Audio/Voices/kim1-ea.ogg")
+	voice_sounds["kim2_ea"] = preload("res://Assets/Audio/Voices/kim2-ea.ogg")
+	voice_sounds["rafael1_lalaki"] = preload("res://Assets/Audio/Voices/rafael1-lalaki.ogg")
+	voice_sounds["romer1_ea"] = preload("res://Assets/Audio/Voices/romer1-ea.ogg")
+	voice_sounds["romer2_lalaki"] = preload("res://Assets/Audio/Voices/romer2-lalaki.ogg")
+	voice_sounds["romer3_lalaki"] = preload("res://Assets/Audio/Voices/romer3-lalaki.ogg")
+	voice_sounds["sed1_lalaki"] = preload("res://Assets/Audio/Voices/sed1-lalaki.ogg")
+	voice_sounds["sed2_lalaki"] = preload("res://Assets/Audio/Voices/sed2-lalaki.ogg")
+	voice_sounds["deliveryman1"] = preload("res://Assets/Audio/Voices/deliveryman1.ogg")
 
 func play_bgm(track_key : String) -> void:
 	if not bgm_tracks.has(track_key):
@@ -107,6 +120,19 @@ func play_sfx(sfx_key:String, pitch_range: float = 0.2, volume_offset_db : float
 	player.stream = sfx_sounds[sfx_key]
 	player.volume_db = sfx_volume_db + volume_offset_db
 	player.pitch_scale = 1.0 + randf_range(-pitch_range, pitch_range)
+	player.play()
+
+func play_voice(voice_key: String, volume_offset_db: float = 0.0) -> void:
+	if not voice_sounds.has(voice_key):
+		print("voice not found: ", voice_key)
+		return
+	var player : AudioStreamPlayer = _get_available_sfx_player()
+	if player == null:
+		print("STOP! SFX pool maxxed out")
+		return
+	player.stream = voice_sounds[voice_key]
+	player.volume_db = sfx_volume_db + volume_offset_db
+	player.pitch_scale = 1.0
 	player.play()
 
 func _get_available_sfx_player() -> AudioStreamPlayer:

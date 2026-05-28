@@ -28,6 +28,7 @@ func _arrived() -> void:
 	has_arrived = true
 	animated_customer_sprite.play("idle")
 	SignalBus.delivery_arrived.emit()
+	AudioManager.play_voice("deliveryman1")
 
 func leave() -> void:
 	if is_leaving:

@@ -29,3 +29,6 @@ func _on_shopy_button_pressed() -> void:
 
 func _on_container_shop_button_pressed() -> void:
 	_open_app("ContainerShop")
+
+func _on_store_upgrade_button_pressed() -> void:
+	_open_app("StoreUpgrade")

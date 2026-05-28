@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cmga75hob1hc1"]
+
+[ext_resource type="Texture2D" uid="uid://bccii18ncwnq8" path="res://Assets/UI/storeupgrade_itemcard_background.png" id="1_48ltx"]
+[ext_resource type="Script" uid="uid://duebtqy3tchu0" path="res://Scripts/Scenes/Components/UI/store_upgrade_item_card.gd" id="2_1ic74"]
+[ext_resource type="Texture2D" uid="uid://bmw5nu2toiomq" path="res://Assets/Sprites/Store/Inside/store_inside_2.png" id="2_48ltx"]
+[ext_resource type="FontFile" uid="uid://d3rmejxqkj1x1" path="res://Assets/Fonts/NotJamSerif11.ttf" id="3_upxkg"]
+[ext_resource type="FontFile" uid="uid://dns3qsk7ocb1p" path="res://Assets/Fonts/monogram-extended.ttf" id="4_rf5g5"]
+
+[node name="StoreUpgradeItemCard" type="TextureRect" unique_id=869245247]
+clip_contents = true
+custom_minimum_size = Vector2(53, 64)
+size_flags_vertical = 0
+texture = ExtResource("1_48ltx")
+script = ExtResource("2_1ic74")
+
+[node name="ContainerImage" type="TextureRect" parent="." unique_id=1833654126]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 108.0
+offset_bottom = 42.0
+texture = ExtResource("2_48ltx")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="PriceLabel" type="Label" parent="." unique_id=1485162727]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 53.0
+offset_right = 104.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.80784315, 0.7529412, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("3_upxkg")
+theme_override_font_sizes/font_size = 8
+text = "P2344"
+
+[node name="ContainerName" type="Label" parent="." unique_id=949608756]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 41.0
+offset_right = 54.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(0.80784315, 0.7529412, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("4_rf5g5")
+theme_override_font_sizes/font_size = 8
+text = "Item Name"
+
+[node name="ButtonLabel" type="Label" parent="." unique_id=1980759544]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 53.0
+offset_right = 72.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("3_upxkg")
+theme_override_font_sizes/font_size = 8
+text = "BUY"
+horizontal_alignment = 1
+
+[node name="BuyButton" type="Button" parent="." unique_id=1071596171]
+clip_contents = true
+layout_mode = 0
+offset_left = 25.0
+offset_top = 51.0
+offset_right = 72.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0.5686275, 0.72156864, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("3_upxkg")
+theme_override_font_sizes/font_size = 1
+text = "
+"
+flat = true
+
+[node name="ARLabel" type="Label" parent="." unique_id=1458189477]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 55.0
+offset_right = 25.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+theme_override_fonts/font = ExtResource("3_upxkg")
+theme_override_font_sizes/font_size = 6
+text = "AR96"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="BuyButton" to="." method="_on_buy_button_pressed"]

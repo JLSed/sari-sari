@@ -24,7 +24,8 @@ func spawn_deliveryman() -> void:
 	customer_container.add_child(delivery_man)
 
 func _on_deliveryman_arrived() -> void:
-	PlayerManager.deliver_pending_packs()
+	await PlayerManager.spawn_pending_delivery_packs()
+	StoreManager.spawn_speech_label("Bili po kayo ule!")
 	PlayerManager.money_changed.emit()
 	await get_tree().create_timer(1.0).timeout
 	if delivery_man != null:
